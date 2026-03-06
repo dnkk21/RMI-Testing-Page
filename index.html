@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RMI Youth Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --navy: #1A2744;
+    --navy-deep: #0F1A33;
+    --cream: #FAF7F2;
+    --warm-white: #FFFDF9;
+    --text: #2C2C2C;
+    --text-light: #6B6B6B;
+    --manila: #2E6B8A;
+    --cebu: #5B7A3A;
+    --iloilo: #8A4A2E;
+    --qc: #5A3A7A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26, 39, 68, 0.97);
+    backdrop-filter: blur(10px);
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span { color: white; font-weight: 400; font-style: italic; }
+
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold) !important;
+    color: var(--navy-deep) !important;
+    padding: 10px 22px;
+    border-radius: 2px;
+    font-weight: 600 !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy-deep);
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 48px 60px;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 50%);
+  }
+
+  .hero-pattern {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(201,168,76,0.03) 40px,
+      rgba(201,168,76,0.03) 41px
+    );
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+
+  .hero h1 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .hero-motto {
+    color: var(--gold-light);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    margin-bottom: 40px;
+    opacity: 0.85;
+  }
+
+  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy-deep);
+    padding: 14px 32px;
+    border-radius: 2px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none; cursor: pointer;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 2px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    position: absolute; right: 48px; bottom: 60px;
+    display: flex; gap: 48px;
+  }
+
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+  }
+  .stat-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 48px; }
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 12px;
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 30px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-title em { color: var(--gold); font-style: italic; }
+
+  .section-desc {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.75;
+    max-width: 560px;
+  }
+
+  /* ABOUT */
+  .about { background: var(--warm-white); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: var(--navy);
+    padding: 48px;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: -8px; right: 8px; bottom: 8px;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    z-index: 0;
+  }
+
+  .about-card-inner { position: relative; z-index: 1; }
+
+  .about-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .about-year-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .about-founder {
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .about-founder strong {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .mission-vision { margin-top: 40px; }
+
+  .mv-item { margin-bottom: 28px; }
+
+  .mv-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .mv-text {
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* PROGRAMS */
+  .programs { background: var(--cream); }
+
+  .programs-inner { max-width: 1200px; margin: 0 auto; }
+
+  .programs-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 60px;
+  }
+
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .program-card {
+    background: var(--navy);
+    padding: 40px 36px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .program-card:hover { background: var(--navy-deep); }
+
+  .program-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .program-card:hover::after { transform: scaleX(1); }
+
+  .program-icon {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .program-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .program-desc {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+  .program-tag {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 4px 12px;
+    background: rgba(201,168,76,0.15);
+    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 1px;
+  }
+
+  /* CAMPUSES */
+  .campuses { background: var(--warm-white); }
+  .campuses-inner { max-width: 1200px; margin: 0 auto; }
+
+  .campus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .campus-card {
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 36px;
+    border-radius: 2px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .campus-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  }
+
+  .campus-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+  }
+
+  .campus-manila::before { background: var(--manila); }
+  .campus-cebu::before { background: var(--cebu); }
+  .campus-iloilo::before { background: var(--iloilo); }
+  .campus-qc::before { background: var(--qc); }
+
+  .campus-location {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .campus-manila .campus-location { color: var(--manila); }
+  .campus-cebu .campus-location { color: var(--cebu); }
+  .campus-iloilo .campus-location { color: var(--iloilo); }
+  .campus-qc .campus-location { color: var(--qc); }
+
+  .campus-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .campus-address {
+    color: var(--text-light);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .campus-phone {
+    color: var(--text);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .campus-enroll {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .campus-enroll::after { content: '→'; transition: transform 0.2s; }
+  .campus-card:hover .campus-enroll::after { transform: translateX(4px); }
+
+  /* UST PARTNERSHIP */
+  .partnership {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .partnership::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+
+  .partnership-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .partnership .section-title { color: white; }
+
+  .partnership .section-desc { color: rgba(255,255,255,0.6); }
+
+  .collab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .collab-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 20px;
+    border-radius: 2px;
+  }
+
+  .collab-icon { font-size: 1.4rem; margin-bottom: 10px; }
+
+  .collab-name {
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .collab-desc {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  /* CONTACT */
+  .contact { background: var(--cream); }
+  .contact-inner { max-width: 1200px; margin: 0 auto; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .contact-card {
+    padding: 28px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background: white;
+    border-radius: 2px;
+  }
+
+  .contact-campus {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .contact-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .contact-detail {
+    color: var(--text-light);
+    font-size: 0.8rem;
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy-deep);
+    padding: 48px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 1.1rem;
+  }
+
+  .footer-text {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .footer-ust {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.78rem;
+    text-align: right;
+  }
+
+  .footer-ust span { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.6s ease forwards; }
+  .hero h1 { animation: fadeUp 0.6s 0.15s ease both; }
+  .hero-sub { animation: fadeUp 0.6s 0.25s ease both; }
+  .hero-motto { animation: fadeUp 0.6s 0.35s ease both; }
+  .hero-buttons { animation: fadeUp 0.6s 0.45s ease both; }
+  .hero-stats { animation: fadeUp 0.6s 0.55s ease both; }
+
+  /* DIVIDER */
+  .gold-divider {
+    width: 60px; height: 2px;
+    background: var(--gold);
+    margin: 24px 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">RMI <span>Youth Center</span></div>
+  <div class="nav-links">
+    <a href="#about">Tungkol sa Amin</a>
+    <a href="#programs">Mga Programa</a>
+    <a href="#campuses">Mga Campus</a>
+    <a href="#partnership">UST Simbahayan</a>
+    <a href="#contact">Makipag-ugnayan</a>
+    <a href="#campuses" class="nav-cta">Mag-enroll</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Religious of Mary Immaculate · Est. 1876</div>
+    <h1>Religious of<br><em>Mary Immaculate</em><br>Youth Center</h1>
+    <p class="hero-sub">Nagbibigay ng de-kalidad na edukasyon at kabuhayan sa mga kabataang may edad 15–35 sa Manila, Cebu, Iloilo, at Quezon City.</p>
+    <p class="hero-motto">"Prayer facilitates everything."</p>
+    <div class="hero-buttons">
+      <a href="#campuses" class="btn-primary">Pumili ng Campus</a>
+      <a href="#programs" class="btn-outline">Alamin ang Mga Programa</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">25+</div>
+      <div class="stat-label">Taon ng ALS</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Mga Campus</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15–35</div>
+      <div class="stat-label">Edad na Tinatanggap</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-card">
+        <div class="about-card-inner">
+          <div class="about-year">1876</div>
+          <div class="about-year-label">Taon ng Pagkakatatag · Madrid, Spain</div>
+          <p class="about-founder">
+            Itinatag bilang tugon sa inspirasyon ni<br>
+            <strong>St. Vicenta Maria Lopez y Vicuña</strong><br>
+            upang pagsilbihan ang espirituwal at pang-ekonomiyang pangangailangan ng mga kabataang manggagawa.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="section-label">Tungkol sa Amin</div>
+      <h2 class="section-title">Nakatuon sa<br><em>Pagbabago ng Buhay</em></h2>
+      <div class="gold-divider"></div>
+      <div class="mission-vision">
+        <div class="mv-item">
+          <div class="mv-label">Misyon</div>
+          <p class="mv-text">Nagbibigay ng accessible at holistic na edukasyon sa mga kabataan at nagtatrabahong estudyante, na nagtataguyod ng kanilang dignidad at potensyal sa pamamagitan ng pananampalataya at serbisyo.</p>
+        </div>
+        <div class="mv-item">
+          <div class="mv-label">Bisyon</div>
+          <p class="mv-text">Isang komunidad ng mga kabataang may malalim na pananampalataya, may kakayahang pangkabuhayan, at may malasakit sa kapwa at sa lipunan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs" id="programs">
+  <div class="programs-inner">
+    <div class="programs-header">
+      <div>
+        <div class="section-label">Mga Programa</div>
+        <h2 class="section-title">Edukasyon Para sa<br><em>Bawat Yugto ng Buhay</em></h2>
+      </div>
+      <p class="section-desc" style="text-align:right; font-size:0.875rem;">Para sa lahat ng may edad 15–35 taon.<br>Blended learning at face-to-face.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-icon">📚</div>
+        <div class="program-name">Alternative Learning System (ALS)</div>
+        <p class="program-desc">Blended learning — online tuwing gabi, face-to-face tuwing Linggo. Para sa mga nagnanais makumpleto ang pangunahing edukasyon.</p>
+        <span class="program-tag">25 Taon na</span>
+      </div>
+      <div class="program-card">
+        <div class="program-icon">🏫</div>
+        <div class="program-name">Elementarya</div>
+        <p class="program-desc">Grade 1 hanggang Grade 6. Para sa mga hindi nakatapos ng pangunahing edukasyon.</p>
+        <span class="program-tag">Grades 1–6</span>
+      </div>
+      <div class="program-card">
+        <div class="program-icon">🎓</div>
+        <div class="program-name">Hayskul</div>
+        <p class="program-desc">Grade 7 hanggang Grade 10. Non-formal na edukasyon para sa mga nagtatrabahong estudyante.</p>
+        <span class="program-tag">Grades 7–10</span>
+      </div>
+      <div class="program-card">
+        <div class="program-icon">💼</div>
+        <div class="program-name">Caregiving</div>
+        <p class="program-desc">Sertipikasyon sa pag-aalaga ng pasyente. Kasosyo ng UST Simbahayan.</p>
+        <span class="program-tag">TESDA</span>
+      </div>
+      <div class="program-card">
+        <div class="program-icon">📊</div>
+        <div class="program-name">Entrepreneurship & Bookkeeping</div>
+        <p class="program-desc">Pangunahing kaalaman sa negosyo at accounting para sa mga nagnanais mag-negosyo.</p>
+        <span class="program-tag">Sertipikasyon</span>
+      </div>
+      <div class="program-card">
+        <div class="program-icon">🚑</div>
+        <div class="program-name">NSTP at First Aid</div>
+        <p class="program-desc">National Service Training Program at Basic First Aid. Sertipikasyon kasosyo ng UST.</p>
+        <span class="program-tag">UST Simbahayan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUSES -->
+<section class="campuses" id="campuses">
+  <div class="campuses-inner">
+    <div class="section-label">Mga Campus</div>
+    <h2 class="section-title">Pumili ng <em>Inyong Campus</em></h2>
+    <p class="section-desc">May apat na sentro sa buong Pilipinas. Piliin ang pinakamalapit sa inyo at magsimulang mag-enroll.</p>
+    <div class="campus-grid">
+      <div class="campus-card campus-manila">
+        <div class="campus-location">Manila</div>
+        <div class="campus-name">Holy Family Social & Educational Center</div>
+        <div class="campus-address">1231 A.H. Lacson Street, Sampaloc, Manila</div>
+        <div class="campus-phone">📞 (02) 8731-4882</div>
+        <a href="#" class="campus-enroll">Mag-enroll Dito</a>
+      </div>
+      <div class="campus-card campus-cebu">
+        <div class="campus-location">Cebu</div>
+        <div class="campus-name">Villa Inmaculada Social & Educational Center</div>
+        <div class="campus-address">9 Tres Borces Extension, Kasambagan, Cebu City</div>
+        <div class="campus-phone">📞 (032) 8234-1097</div>
+        <a href="#" class="campus-enroll">Mag-enroll Dito</a>
+      </div>
+      <div class="campus-card campus-iloilo">
+        <div class="campus-location">Iloilo</div>
+        <div class="campus-name">Villa Santa Vicenta Maria Social & Educational Center</div>
+        <div class="campus-address">5 Libertad Street, Jaro, Iloilo City</div>
+        <div class="campus-phone">📞 (033) 8333-1003</div>
+        <a href="#" class="campus-enroll">Mag-enroll Dito</a>
+      </div>
+      <div class="campus-card campus-qc">
+        <div class="campus-location">Quezon City</div>
+        <div class="campus-name">Villa Maria Social & Educational Center</div>
+        <div class="campus-address">53 M. Cuenco Street, Sta. Mesa Heights, Quezon City</div>
+        <div class="campus-phone">📞 (02) 8731-9024</div>
+        <a href="#" class="campus-enroll">Mag-enroll Dito</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UST PARTNERSHIP -->
+<section class="partnership" id="partnership">
+  <div class="partnership-inner">
+    <div>
+      <div class="section-label" style="color:var(--gold)">Kasosyo</div>
+      <h2 class="section-title">UST <em>Simbahayan</em><br>Partnership</h2>
+      <div class="gold-divider"></div>
+      <p class="section-desc">Nagtutulungan kami ng University of Santo Tomas Simbahayan upang magbigay ng mas komprehensibong edukasyon at serbisyo sa aming mga estudyante.</p>
+    </div>
+    <div class="collab-grid">
+      <div class="collab-item">
+        <div class="collab-icon">🙏</div>
+        <div class="collab-name">Espiritwalidad</div>
+        <div class="collab-desc">Pagpapalalim ng pananampalataya at espirituwal na pamumuno</div>
+      </div>
+      <div class="collab-item">
+        <div class="collab-icon">⛪</div>
+        <div class="collab-name">Relihiyosong Gawain</div>
+        <div class="collab-desc">Mga aktibidad at programang relihiyoso para sa kabataan</div>
+      </div>
+      <div class="collab-item">
+        <div class="collab-icon">📖</div>
+        <div class="collab-name">Edukasyon</div>
+        <div class="collab-desc">Mga sertipikasyon at kurso sa pakikipagtulungan ng UST</div>
+      </div>
+      <div class="collab-item">
+        <div class="collab-icon">⚖️</div>
+        <div class="collab-name">Katarungan at Kapayapaan</div>
+        <div class="collab-desc">Pagtataguyod ng karapatan at dignidad ng bawat isa</div>
+      </div>
+      <div class="collab-item" style="grid-column: span 2;">
+        <div class="collab-icon">🌿</div>
+        <div class="collab-name">Integridad ng Nilikha</div>
+        <div class="collab-desc">Pag-aalaga at pagpapahalaga sa kalikasan at kapaligiran</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Makipag-ugnayan</div>
+    <h2 class="section-title">Handa Kaming <em>Tumulong</em></h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-campus">Manila</div>
+        <div class="contact-name">Holy Family Social & Educational Center</div>
+        <div class="contact-detail">1231 A.H. Lacson Street<br>Sampaloc, Manila<br><br>(02) 8731-4882</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-campus">Cebu</div>
+        <div class="contact-name">Villa Inmaculada Social & Educational Center</div>
+        <div class="contact-detail">9 Tres Borces Extension<br>Kasambagan, Cebu City<br><br>(032) 8234-1097</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-campus">Iloilo</div>
+        <div class="contact-name">Villa Santa Vicenta Maria Social & Educational Center</div>
+        <div class="contact-detail">5 Libertad Street<br>Jaro, Iloilo City<br><br>(033) 8333-1003</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-campus">Quezon City</div>
+        <div class="contact-name">Villa Maria Social & Educational Center</div>
+        <div class="contact-detail">53 M. Cuenco Street<br>Sta. Mesa Heights, Quezon City<br><br>(02) 8731-9024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">RMI Youth Center</div>
+    <div class="footer-text">
+      © 2026 Religious of Mary Immaculate Youth Center<br>
+      Itinatag noong Hunyo 11, 1876 · Manila · Cebu · Iloilo · Quezon City
+    </div>
+    <div class="footer-ust">Kasosyo ng<br><span>UST Simbahayan</span></div>
+  </div>
+</footer>
+
+</body>
+</html>
