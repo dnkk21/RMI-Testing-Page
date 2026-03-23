@@ -1,892 +1,1657 @@
 <!DOCTYPE html>
 <html lang="fil">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RMI Youth Center</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8D5A3;
-    --navy: #1A2744;
-    --navy-deep: #0F1A33;
-    --cream: #FAF7F2;
-    --warm-white: #FFFDF9;
-    --text: #2C2C2C;
-    --text-light: #6B6B6B;
-    --manila: #2E6B8A;
-    --cebu: #5B7A3A;
-    --iloilo: #8A4A2E;
-    --qc: #5A3A7A;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(26, 39, 68, 0.97);
-    backdrop-filter: blur(10px);
-    padding: 0 48px;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 68px;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.3);
-  }
-
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    color: var(--gold);
-    font-size: 1.3rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-  }
-
-  .nav-logo span { color: white; font-weight: 400; font-style: italic; }
-
-  .nav-links { display: flex; gap: 32px; align-items: center; }
-
-  .nav-links a {
-    color: rgba(255,255,255,0.75);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--gold); }
-
-  .nav-cta {
-    background: var(--gold) !important;
-    color: var(--navy-deep) !important;
-    padding: 10px 22px;
-    border-radius: 2px;
-    font-weight: 600 !important;
-  }
-
-  .nav-cta:hover { background: var(--gold-light) !important; }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    background: var(--navy-deep);
-    display: flex; align-items: center;
-    position: relative;
-    overflow: hidden;
-    padding: 100px 48px 60px;
-  }
-
-  .hero-bg {
-    position: absolute; inset: 0;
-    background: 
-      radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 50%);
-  }
-
-  .hero-pattern {
-    position: absolute; inset: 0;
-    background-image: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 40px,
-      rgba(201,168,76,0.03) 40px,
-      rgba(201,168,76,0.03) 41px
-    );
-  }
-
-  .hero-content {
-    position: relative; z-index: 2;
-    max-width: 680px;
-  }
-
-  .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 12px;
-    color: var(--gold);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    width: 40px; height: 1px;
-    background: var(--gold);
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 5vw, 4.2rem);
-    color: white;
-    line-height: 1.15;
-    margin-bottom: 24px;
-    font-weight: 700;
-  }
-
-  .hero h1 em {
-    color: var(--gold);
-    font-style: italic;
-  }
-
-  .hero-sub {
-    color: rgba(255,255,255,0.6);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 20px;
-    font-weight: 300;
-  }
-
-  .hero-motto {
-    color: var(--gold-light);
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1rem;
-    margin-bottom: 40px;
-    opacity: 0.85;
-  }
-
-  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-
-  .btn-primary {
-    background: var(--gold);
-    color: var(--navy-deep);
-    padding: 14px 32px;
-    border-radius: 2px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: all 0.2s;
-    border: none; cursor: pointer;
-  }
-
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-  .btn-outline {
-    background: transparent;
-    color: white;
-    padding: 14px 32px;
-    border-radius: 2px;
-    font-weight: 500;
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: all 0.2s;
-  }
-
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-
-  .hero-stats {
-    position: absolute; right: 48px; bottom: 60px;
-    display: flex; gap: 48px;
-  }
-
-  .stat { text-align: center; }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    color: var(--gold);
-    font-weight: 700;
-    line-height: 1;
-  }
-  .stat-label {
-    color: rgba(255,255,255,0.5);
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-top: 6px;
-  }
-
-  /* SECTIONS */
-  section { padding: 100px 48px; }
-
-  .section-label {
-    display: inline-flex; align-items: center; gap: 12px;
-    color: var(--gold);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .section-label::before {
-    content: '';
-    width: 30px; height: 1px;
-    background: var(--gold);
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 3.5vw, 2.8rem);
-    color: var(--navy);
-    line-height: 1.2;
-    margin-bottom: 16px;
-  }
-
-  .section-title em { color: var(--gold); font-style: italic; }
-
-  .section-desc {
-    color: var(--text-light);
-    font-size: 1rem;
-    line-height: 1.75;
-    max-width: 560px;
-  }
-
-  /* ABOUT */
-  .about { background: var(--warm-white); }
-
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .about-visual {
-    position: relative;
-  }
-
-  .about-card {
-    background: var(--navy);
-    padding: 48px;
-    border-radius: 2px;
-    position: relative;
-  }
-
-  .about-card::before {
-    content: '';
-    position: absolute;
-    top: -8px; left: -8px; right: 8px; bottom: 8px;
-    border: 1px solid var(--gold);
-    border-radius: 2px;
-    z-index: 0;
-  }
-
-  .about-card-inner { position: relative; z-index: 1; }
-
-  .about-year {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    color: var(--gold);
-    font-weight: 700;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-
-  .about-year-label {
-    color: rgba(255,255,255,0.5);
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-  }
-
-  .about-founder {
-    color: white;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    font-style: italic;
-  }
-
-  .about-founder strong {
-    color: var(--gold);
-    font-style: normal;
-  }
-
-  .mission-vision { margin-top: 40px; }
-
-  .mv-item { margin-bottom: 28px; }
-
-  .mv-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 8px;
-  }
-
-  .mv-text {
-    color: var(--text);
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  /* PROGRAMS */
-  .programs { background: var(--cream); }
-
-  .programs-inner { max-width: 1200px; margin: 0 auto; }
-
-  .programs-header {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 60px;
-  }
-
-  .programs-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-
-  .program-card {
-    background: var(--navy);
-    padding: 40px 36px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  .program-card:hover { background: var(--navy-deep); }
-
-  .program-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
-  }
-
-  .program-card:hover::after { transform: scaleX(1); }
-
-  .program-icon {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-
-  .program-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
-    color: white;
-    margin-bottom: 12px;
-  }
-
-  .program-desc {
-    color: rgba(255,255,255,0.55);
-    font-size: 0.875rem;
-    line-height: 1.65;
-  }
-
-  .program-tag {
-    display: inline-block;
-    margin-top: 16px;
-    padding: 4px 12px;
-    background: rgba(201,168,76,0.15);
-    color: var(--gold);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border-radius: 1px;
-  }
-
-  /* CAMPUSES */
-  .campuses { background: var(--warm-white); }
-  .campuses-inner { max-width: 1200px; margin: 0 auto; }
-
-  .campus-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-top: 60px;
-  }
-
-  .campus-card {
-    border: 1px solid rgba(0,0,0,0.08);
-    padding: 36px;
-    border-radius: 2px;
-    background: white;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .campus-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-  }
-
-  .campus-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-  }
-
-  .campus-manila::before { background: var(--manila); }
-  .campus-cebu::before { background: var(--cebu); }
-  .campus-iloilo::before { background: var(--iloilo); }
-  .campus-qc::before { background: var(--qc); }
-
-  .campus-location {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .campus-manila .campus-location { color: var(--manila); }
-  .campus-cebu .campus-location { color: var(--cebu); }
-  .campus-iloilo .campus-location { color: var(--iloilo); }
-  .campus-qc .campus-location { color: var(--qc); }
-
-  .campus-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--navy);
-    margin-bottom: 16px;
-    line-height: 1.3;
-  }
-
-  .campus-address {
-    color: var(--text-light);
-    font-size: 0.875rem;
-    line-height: 1.6;
-    margin-bottom: 16px;
-  }
-
-  .campus-phone {
-    color: var(--text);
-    font-size: 0.875rem;
-    font-weight: 500;
-  }
-
-  .campus-enroll {
-    display: inline-flex; align-items: center; gap: 8px;
-    margin-top: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-  }
-
-  .campus-enroll::after { content: '→'; transition: transform 0.2s; }
-  .campus-card:hover .campus-enroll::after { transform: translateX(4px); }
-
-  /* UST PARTNERSHIP */
-  .partnership {
-    background: var(--navy);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .partnership::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.08) 0%, transparent 60%);
-  }
-
-  .partnership-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-    position: relative; z-index: 1;
-  }
-
-  .partnership .section-title { color: white; }
-
-  .partnership .section-desc { color: rgba(255,255,255,0.6); }
-
-  .collab-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .collab-item {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(201,168,76,0.2);
-    padding: 20px;
-    border-radius: 2px;
-  }
-
-  .collab-icon { font-size: 1.4rem; margin-bottom: 10px; }
-
-  .collab-name {
-    color: white;
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin-bottom: 6px;
-  }
-
-  .collab-desc {
-    color: rgba(255,255,255,0.45);
-    font-size: 0.78rem;
-    line-height: 1.5;
-  }
-
-  /* CONTACT */
-  .contact { background: var(--cream); }
-  .contact-inner { max-width: 1200px; margin: 0 auto; }
-
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    margin-top: 60px;
-  }
-
-  .contact-card {
-    padding: 28px;
-    border: 1px solid rgba(0,0,0,0.08);
-    background: white;
-    border-radius: 2px;
-  }
-
-  .contact-campus {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 12px;
-  }
-
-  .contact-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.95rem;
-    color: var(--navy);
-    margin-bottom: 12px;
-    line-height: 1.4;
-  }
-
-  .contact-detail {
-    color: var(--text-light);
-    font-size: 0.8rem;
-    line-height: 1.7;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--navy-deep);
-    padding: 48px;
-    border-top: 1px solid rgba(201,168,76,0.2);
-  }
-
-  .footer-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    color: var(--gold);
-    font-size: 1.1rem;
-  }
-
-  .footer-text {
-    color: rgba(255,255,255,0.35);
-    font-size: 0.8rem;
-    text-align: center;
-  }
-
-  .footer-ust {
-    color: rgba(255,255,255,0.4);
-    font-size: 0.78rem;
-    text-align: right;
-  }
-
-  .footer-ust span { color: var(--gold); }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-eyebrow { animation: fadeUp 0.6s ease forwards; }
-  .hero h1 { animation: fadeUp 0.6s 0.15s ease both; }
-  .hero-sub { animation: fadeUp 0.6s 0.25s ease both; }
-  .hero-motto { animation: fadeUp 0.6s 0.35s ease both; }
-  .hero-buttons { animation: fadeUp 0.6s 0.45s ease both; }
-  .hero-stats { animation: fadeUp 0.6s 0.55s ease both; }
-
-  /* DIVIDER */
-  .gold-divider {
-    width: 60px; height: 2px;
-    background: var(--gold);
-    margin: 24px 0;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RMI Youth Center</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)" />
+  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin />
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap)" rel="stylesheet" />
+
+  <style>
+    /* =========================================================
+       RESET & BASE
+    ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #1a3a5c;
+      --navy-dark:  #0f2540;
+      --navy-mid:   #1e4976;
+      --blue-light: #5b9bd5;
+      --blue-pale:  #d6e8f7;
+      --blue-wash:  #eef5fc;
+      --gold:       #c8a84b;
+      --gold-light: #e8d48a;
+      --gold-pale:  #fdf6e0;
+      --white:      #ffffff;
+      --off-white:  #f7f9fc;
+      --text-dark:  #1a2535;
+      --text-mid:   #3d5170;
+      --text-light: #6b80a0;
+      --border:     #c8d8ea;
+      --shadow-sm:  0 2px 8px rgba(26,58,92,.10);
+      --shadow-md:  0 6px 24px rgba(26,58,92,.14);
+      --shadow-lg:  0 12px 40px rgba(26,58,92,.18);
+      --radius-sm:  6px;
+      --radius-md:  12px;
+      --radius-lg:  20px;
+      --font-serif: 'Merriweather', Georgia, serif;
+      --font-sans:  'Source Sans 3', 'Segoe UI', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-dark);
+      background: var(--off-white);
+    }
+
+    img { display: block; max-width: 100%; }
+    a  { color: inherit; text-decoration: none; }
+
+    /* =========================================================
+       TYPOGRAPHY HELPERS
+    ========================================================= */
+    .section-eyebrow {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--blue-light);
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .text-center { text-align: center; }
+
+    /* =========================================================
+       LAYOUT UTILITIES
+    ========================================================= */
+    .container {
+      width: min(1160px, 92%);
+      margin-inline: auto;
+    }
+
+    section {
+      padding-block: 5rem;
+    }
+
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy-dark);
+      border-bottom: 3px solid var(--gold);
+      padding: .9rem 0;
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+    }
+
+    /* ---- Logo placeholder ---- */
+    .logo-placeholder {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-light), var(--navy-mid));
+      border: 2px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: .45rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-align: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      /* ── REPLACE: swap this block with an <img> tag ── */
+    }
+
+    /* If you place an actual <img> inside .logo-placeholder, it fills perfectly */
+    .logo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .logo-text-stack { line-height: 1.1; }
+
+    .logo-text-stack .org {
+      display: block;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+
+    .logo-text-stack .name {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .logo-text-stack .tagline {
+      display: block;
+      font-size: .65rem;
+      color: rgba(255,255,255,.6);
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .navbar-links a {
+      font-size: .88rem;
+      font-weight: 600;
+      color: rgba(255,255,255,.8);
+      letter-spacing: .03em;
+      transition: color .2s;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .navbar-links a:hover {
+      color: var(--gold-light);
+      border-color: var(--gold);
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+    .hero {
+      background: linear-gradient(155deg, var(--navy-dark) 0%, var(--navy-mid) 55%, #1e6a9e 100%);
+      padding-block: 6rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 50%, rgba(91,155,213,.15) 0%, transparent 70%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='[w3.org](http://www.w3.org/2000/svg)'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero .container {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-content {}
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50px;
+      padding: .3rem .9rem;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '✦';
+      font-size: .6rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 1rem;
+      max-width: 460px;
+    }
+
+    .hero-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--gold-light);
+      border-left: 3px solid var(--gold);
+      padding-left: 1rem;
+      margin: 1.5rem 0 2rem;
+      opacity: .9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .75rem 1.6rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      transition: all .22s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy-dark);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(200,168,75,.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: rgba(255,255,255,.4);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,.1);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* Hero stats */
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    .hero-stat {}
+
+    .hero-stat .num {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .hero-stat .lbl {
+      display: block;
+      font-size: .75rem;
+      color: rgba(255,255,255,.6);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-top: .25rem;
+    }
+
+    /* Hero image panel */
+    .hero-image-panel {
+      position: relative;
+    }
+
+    .hero-img-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 3px solid rgba(255,255,255,.12);
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, rgba(91,155,213,.3), rgba(26,58,92,.6));
+    }
+
+    /* ---- PLACEHOLDER: replace this SVG with your actual <img> ---- */
+    .hero-img-wrap img,
+    .img-placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .img-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      background: linear-gradient(135deg, var(--navy-mid), #2a6fac);
+      color: rgba(255,255,255,.5);
+      font-size: .8rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .img-placeholder svg {
+      width: 48px;
+      height: 48px;
+      opacity: .4;
+    }
+
+    .img-placeholder span {
+      font-size: .75rem;
+      opacity: .6;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      background: var(--gold);
+      color: var(--navy-dark);
+      padding: .8rem 1.2rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      font-weight: 700;
+    }
+
+    .hero-badge .num  { display: block; font-family: var(--font-serif); font-size: 1.5rem; }
+    .hero-badge .text { display: block; font-size: .7rem; letter-spacing: .05em; }
+
+    /* =========================================================
+       ABOUT STRIP
+    ========================================================= */
+    #about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      aspect-ratio: 4/3;
+      border: 4px solid var(--blue-pale);
+    }
+
+    .about-img-wrap img,
+    .about-img-wrap .img-placeholder {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-img-wrap .img-placeholder {
+      background: linear-gradient(135deg, var(--blue-pale), var(--blue-light));
+      color: var(--navy-mid);
+    }
+
+    .about-content .section-eyebrow { margin-bottom: .5rem; }
+    .about-content .section-title   { margin-bottom: 1rem; text-align: left; }
+
+    .about-body {
+      color: var(--text-mid);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .about-highlight {
+      background: var(--blue-wash);
+      border-left: 4px solid var(--blue-light);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: .85rem 1.1rem;
+      font-size: .9rem;
+      color: var(--navy);
+      font-style: italic;
+    }
+
+    /* Mission / Vision cards */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .mv-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+
+    .mv-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: .6rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .mv-card h3::before {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .mv-card p {
+      font-size: .9rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       PROGRAMS
+    ========================================================= */
+    #programs {
+      background: var(--blue-wash);
+    }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .program-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.75rem 1.5rem;
+      transition: all .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue-light), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s ease;
+    }
+
+    .program-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--blue-light);
+    }
+
+    .program-card:hover::before { transform: scaleX(1); }
+
+    .program-icon {
+      font-size: 2rem;
+      margin-bottom: .75rem;
+      line-height: 1;
+    }
+
+    .program-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: .4rem;
+    }
+
+    .program-card p {
+      font-size: .875rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+      margin-bottom: .75rem;
+    }
+
+    .program-badge {
+      display: inline-block;
+      background: var(--blue-pale);
+      color: var(--navy-mid);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .25rem .65rem;
+      border-radius: 50px;
+    }
+
+    .program-age {
+      display: block;
+      font-size: .75rem;
+      color: var(--text-light);
+      margin-top: .4rem;
+    }
+
+    /* =========================================================
+       CAMPUSES
+    ========================================================= */
+    #campuses {
+      background: var(--white);
+    }
+
+    .campuses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.75rem;
+    }
+
+    /* The entire card is clickable */
+    .campus-card {
+      display: block;           /* <a> as block */
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all .28s ease;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+
+    .campus-card:hover {
+      border-color: var(--blue-light);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-5px);
+    }
+
+    .campus-card:hover .campus-enroll-btn {
+      background: var(--navy-dark);
+    }
+
+    /* Campus image area */
+    .campus-img-wrap {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: var(--blue-pale);
+      position: relative;
+    }
+
+    .campus-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+
+    .campus-card:hover .campus-img-wrap img { transform: scale(1.05); }
+
+    /* ---- Campus image placeholder (remove when you add real photos) ---- */
+    .campus-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      font-size: .78rem;
+      color: var(--navy-mid);
+      background: linear-gradient(135deg, var(--blue-pale) 0%, #b8d4ee 100%);
+    }
+
+    .campus-img-placeholder svg {
+      width: 36px;
+      height: 36px;
+      opacity: .5;
+    }
+
+    .campus-img-placeholder .ph-label {
+      font-weight: 700;
+      font-size: .7rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: .7;
+    }
+
+    .campus-city-tag {
+      position: absolute;
+      top: .6rem;
+      left: .6rem;
+      background: var(--navy);
+      color: var(--white);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: .2rem .6rem;
+      border-radius: 50px;
+    }
+
+    /* Campus body */
+    .campus-body {
+      padding: 1.25rem 1.25rem 1rem;
+    }
+
+    .campus-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .15rem;
+    }
+
+    .campus-center-name {
+      font-size: .78rem;
+      color: var(--blue-light);
+      font-style: italic;
+      margin-bottom: .6rem;
+    }
+
+    .campus-address {
+      font-size: .82rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+      margin-bottom: .4rem;
+      display: flex;
+      gap: .4rem;
+    }
+
+    .campus-address::before { content: '📍'; font-size: .75rem; flex-shrink: 0; margin-top: .05rem; }
+
+    .campus-phone {
+      font-size: .82rem;
+      color: var(--text-mid);
+      display: flex;
+      gap: .4rem;
+      margin-bottom: 1rem;
+    }
+
+    .campus-phone::before { content: '📞'; font-size: .75rem; flex-shrink: 0; }
+
+    .campus-enroll-btn {
+      display: block;
+      width: 100%;
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: .65rem;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: 0 0 calc(var(--radius-md) - 2px) calc(var(--radius-md) - 2px);
+      transition: background .2s;
+    }
+
+    /* =========================================================
+       SIMBAHAYAN PARTNERSHIP
+    ========================================================= */
+    #simbahayan {
+      background: var(--blue-wash);
+    }
+
+    .simbahayan-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* Carousel */
+    .collab-carousel {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 3px solid var(--border);
+      background: var(--navy);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform .5s ease;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      aspect-ratio: 4/3;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ---- Collab image placeholders ---- */
+    .collab-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .collab-img-placeholder svg {
+      width: 48px;
+      height: 48px;
+      opacity: .4;
+    }
+
+    .collab-img-placeholder .collab-ph-title {
+      font-weight: 700;
+      color: var(--gold-light);
+      font-size: .85rem;
+    }
+
+    .collab-img-placeholder .collab-ph-sub {
+      font-size: .72rem;
+      opacity: .6;
+    }
+
+    /* Carousel controls */
+    .carousel-controls {
+      position: absolute;
+      bottom: .85rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: .45rem;
+      z-index: 5;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.4);
+      border: none;
+      cursor: pointer;
+      transition: all .2s;
+      padding: 0;
+    }
+
+    .carousel-dot.active {
+      background: var(--gold-light);
+      transform: scale(1.3);
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,.35);
+      color: var(--white);
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+      z-index: 5;
+    }
+
+    .carousel-btn:hover { background: rgba(0,0,0,.6); }
+    .carousel-btn.prev  { left: .6rem; }
+    .carousel-btn.next  { right: .6rem; }
+
+    /* Caption overlay */
+    .carousel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem 1.25rem .9rem;
+      background: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+      color: var(--white);
+      font-size: .8rem;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .carousel-slide:hover .carousel-caption { opacity: 1; }
+
+    /* Simbahayan pillars */
+    .simbahayan-content {}
+    .simbahayan-content .section-title { text-align: left; }
+
+    .simbahayan-intro {
+      font-size: .95rem;
+      color: var(--text-mid);
+      margin-bottom: 1.75rem;
+      line-height: 1.8;
+    }
+
+    .pillars-list {
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+    }
+
+    .pillar-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: .9rem 1rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: all .2s;
+    }
+
+    .pillar-item:hover {
+      border-color: var(--blue-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pillar-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: .1rem;
+    }
+
+    .pillar-text h4 {
+      font-family: var(--font-serif);
+      font-size: .9rem;
+      color: var(--navy);
+      margin-bottom: .2rem;
+    }
+
+    .pillar-text p {
+      font-size: .82rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+    #contact {
+      background: var(--navy-dark);
+      color: var(--white);
+    }
+
+    #contact .section-title {
+      color: var(--white);
+    }
+
+    #contact .section-title em { color: var(--gold-light); }
+
+    #contact .section-subtitle { color: rgba(255,255,255,.65); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      transition: all .25s;
+    }
+
+    .contact-card:hover {
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.2);
+    }
+
+    .contact-card .city {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy-dark);
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .2rem .7rem;
+      border-radius: 50px;
+      margin-bottom: .85rem;
+    }
+
+    .contact-card h4 {
+      font-family: var(--font-serif);
+      font-size: .95rem;
+      font-style: italic;
+      color: var(--blue-pale);
+      margin-bottom: .6rem;
+      line-height: 1.4;
+    }
+
+    .contact-card address {
+      font-style: normal;
+      font-size: .82rem;
+      color: rgba(255,255,255,.65);
+      line-height: 1.6;
+    }
+
+    .contact-card .phone {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      margin-top: .5rem;
+      color: var(--gold-light);
+      font-size: .82rem;
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      background: #080f1a;
+      color: rgba(255,255,255,.45);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: .8rem;
+    }
+
+    footer strong {
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 900px) {
+      .hero .container { grid-template-columns: 1fr; }
+      .hero-image-panel { display: none; }
+      .about-grid       { grid-template-columns: 1fr; }
+      .simbahayan-inner { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      section { padding-block: 3.5rem; }
+      .mv-grid { grid-template-columns: 1fr; }
+      .navbar-links { display: none; }
+      .hero-stats { gap: 1.25rem; }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">RMI <span>Youth Center</span></div>
-  <div class="nav-links">
-    <a href="#about">Tungkol sa Amin</a>
-    <a href="#programs">Mga Programa</a>
-    <a href="#campuses">Mga Campus</a>
-    <a href="#partnership">UST Simbahayan</a>
-    <a href="#contact">Makipag-ugnayan</a>
-    <a href="#campuses" class="nav-cta">Mag-enroll</a>
-  </div>
-</nav>
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-pattern"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Religious of Mary Immaculate · Est. 1876</div>
-    <h1>Religious of<br><em>Mary Immaculate</em><br>Youth Center</h1>
-    <p class="hero-sub">Nagbibigay ng de-kalidad na edukasyon at kabuhayan sa mga kabataang may edad 15–35 sa Manila, Cebu, Iloilo, at Quezon City.</p>
-    <p class="hero-motto">"Prayer facilitates everything."</p>
-    <div class="hero-buttons">
-      <a href="#campuses" class="btn-primary">Pumili ng Campus</a>
-      <a href="#programs" class="btn-outline">Alamin ang Mga Programa</a>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">25+</div>
-      <div class="stat-label">Taon ng ALS</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">4</div>
-      <div class="stat-label">Mga Campus</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">15–35</div>
-      <div class="stat-label">Edad na Tinatanggap</div>
-    </div>
-  </div>
-</section>
+        <!--
+          ╔══════════════════════════════════════════════════════╗
+          ║  LOGO PLACEHOLDER                                    ║
+          ║  Replace the content below with:                    ║
+          ║  <img src="your-logo.png" alt="RMI Logo" />         ║
+          ╚══════════════════════════════════════════════════════╝
+        -->
+        <div class="logo-placeholder" aria-label="RMI Logo — replace with actual logo">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+            <circle cx="14" cy="14" r="13" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+            <path d="M14 4 C14 4 8 9 8 14 C8 17.31 10.69 20 14 20 C17.31 20 20 17.31 20 14 C20 9 14 4 14 4Z" fill="rgba(200,168,75,0.7)"/>
+            <circle cx="14" cy="14" r="3" fill="white" opacity="0.9"/>
+          </svg>
+        </div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-grid">
-    <div class="about-visual">
-      <div class="about-card">
-        <div class="about-card-inner">
-          <div class="about-year">1876</div>
-          <div class="about-year-label">Taon ng Pagkakatatag · Madrid, Spain</div>
-          <p class="about-founder">
-            Itinatag bilang tugon sa inspirasyon ni<br>
-            <strong>St. Vicenta Maria Lopez y Vicuña</strong><br>
+        <div class="logo-text-stack">
+          <span class="org">RMI</span>
+          <span class="name">Youth Center</span>
+          <span class="tagline">Religious of Mary Immaculate · Est. 1876</span>
+        </div>
+      </div>
+
+      <ul class="navbar-links">
+        <li><a href="#about">Tungkol sa Amin</a></li>
+        <li><a href="#programs">Mga Programa</a></li>
+        <li><a href="#campuses">Mga Campus</a></li>
+        <li><a href="#simbahayan">Simbahayan</a></li>
+        <li><a href="#contact">Makipag-ugnayan</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Religious of Mary Immaculate · Est. 1876</div>
+
+        <h1>
+          Religious of <em>Mary Immaculate</em><br/>Youth Center
+        </h1>
+
+        <p class="hero-desc">
+          Nagbibigay ng de-kalidad na edukasyon at kabuhayan sa mga kabataang
+          may edad <strong style="color:var(--gold-light)">15–35</strong>
+          sa Manila, Cebu, Iloilo, at Quezon City.
+        </p>
+
+        <blockquote class="hero-quote">"Prayer facilitates everything."</blockquote>
+
+        <div class="hero-actions">
+          <a href="#campuses" class="btn btn-primary">Pumili ng Campus</a>
+          <a href="#programs" class="btn btn-outline">Alamin ang Mga Programa</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="num">25+</span>
+            <span class="lbl">Taon ng Serbisyo</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num">15–35</span>
+            <span class="lbl">Edad ng Pagkakataon</span>
+          </div>
+          <div class="hero-stat">
+            <span class="num">4</span>
+            <span class="lbl">Kampus sa Pilipinas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero decorative image panel — replace placeholder with real photo -->
+      <div class="hero-image-panel">
+        <div class="hero-img-wrap">
+          <!--
+            Replace the div below with:
+            <img src="hero-photo.jpg" alt="RMI Youth Center Students" />
+          -->
+          <div class="img-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+              <rect x="4" y="10" width="40" height="30" rx="3" stroke="currentColor" stroke-width="2"/>
+              <circle cx="18" cy="22" r="5" stroke="currentColor" stroke-width="2"/>
+              <path d="M4 34 L14 24 L22 32 L30 24 L44 34" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+            <span>Hero / Banner Photo</span>
+            <span>Palitan ng inyong larawan</span>
+          </div>
+        </div>
+        <div class="hero-badge">
+          <span class="num">1876</span>
+          <span class="text">Itinatag · Madrid</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- About image — replace placeholder -->
+        <div class="about-img-wrap">
+          <!--
+            Replace with:
+            <img src="about-photo.jpg" alt="RMI Youth Center" />
+          -->
+          <div class="img-placeholder" style="background:linear-gradient(135deg,var(--blue-pale),#b8d4ee);color:var(--navy-mid);">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)" style="width:48px;height:48px;opacity:.5;">
+              <rect x="4" y="10" width="40" height="30" rx="3" stroke="currentColor" stroke-width="2"/>
+              <circle cx="18" cy="22" r="5" stroke="currentColor" stroke-width="2"/>
+              <path d="M4 34 L14 24 L22 32 L30 24 L44 34" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+            <span style="font-size:.8rem;opacity:.7;">About / History Photo</span>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <span class="section-eyebrow">Tungkol sa Amin</span>
+          <h2 class="section-title">Nakatuon sa <em>Pagbabago ng Buhay</em></h2>
+          <p class="about-body">
+            Itinatag bilang tugon sa inspirasyon ni <strong>St. Vicenta Maria Lopez y Vicuña</strong>
             upang pagsilbihan ang espirituwal at pang-ekonomiyang pangangailangan ng mga kabataang manggagawa.
+            Mula Madrid, Espanya noong 1876, ang misyon ay nagtuloy sa Pilipinas.
           </p>
+          <div class="about-highlight">
+            "Ang bawat kabataan ay may karapatang lumago — sa pananampalataya, kaalaman, at dignidad."
+          </div>
+
+          <div class="mv-grid">
+            <div class="mv-card">
+              <h3>Misyon</h3>
+              <p>Nagbibigay ng accessible at holistic na edukasyon sa mga kabataan at nagtatrabahong estudyante,
+                 na nagtataguyod ng kanilang dignidad at potensyal sa pamamagitan ng pananampalataya at serbisyo.</p>
+            </div>
+            <div class="mv-card">
+              <h3>Bisyon</h3>
+              <p>Isang komunidad ng mga kabataang may malalim na pananampalataya, may kakayahang pangkabuhayan,
+                 at may malasakit sa kapwa at sa lipunan.</p>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
-    <div class="about-content">
-      <div class="section-label">Tungkol sa Amin</div>
-      <h2 class="section-title">Nakatuon sa<br><em>Pagbabago ng Buhay</em></h2>
-      <div class="gold-divider"></div>
-      <div class="mission-vision">
-        <div class="mv-item">
-          <div class="mv-label">Misyon</div>
-          <p class="mv-text">Nagbibigay ng accessible at holistic na edukasyon sa mga kabataan at nagtatrabahong estudyante, na nagtataguyod ng kanilang dignidad at potensyal sa pamamagitan ng pananampalataya at serbisyo.</p>
+  </section>
+
+
+  <!-- ===================== PROGRAMS ===================== -->
+  <section id="programs">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-eyebrow">Aming Mga Programa</span>
+        <h2 class="section-title">Edukasyon Para sa <em>Bawat Yugto ng Buhay</em></h2>
+        <p class="section-subtitle">Para sa lahat ng may edad 15–35 taon. Blended learning at face-to-face.</p>
+      </div>
+
+      <div class="programs-grid">
+
+        <div class="program-card">
+          <div class="program-icon">📚</div>
+          <h3>Alternative Learning System (ALS)</h3>
+          <p>Blended learning — online tuwing gabi, face-to-face tuwing Linggo.
+             Para sa mga nagnanais makumpleto ang pangunahing edukasyon.</p>
+          <span class="program-badge">25 Taon na</span>
+          <span class="program-age">Edad 15–35 · Blended</span>
         </div>
-        <div class="mv-item">
-          <div class="mv-label">Bisyon</div>
-          <p class="mv-text">Isang komunidad ng mga kabataang may malalim na pananampalataya, may kakayahang pangkabuhayan, at may malasakit sa kapwa at sa lipunan.</p>
+
+        <div class="program-card">
+          <div class="program-icon">🏫</div>
+          <h3>Elementarya</h3>
+          <p>Grade 1 hanggang Grade 6. Para sa mga hindi nakatapos ng pangunahing edukasyon.</p>
+          <span class="program-badge">Grades 1–6</span>
+          <span class="program-age">Edad 15–35</span>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- PROGRAMS -->
-<section class="programs" id="programs">
-  <div class="programs-inner">
-    <div class="programs-header">
-      <div>
-        <div class="section-label">Mga Programa</div>
-        <h2 class="section-title">Edukasyon Para sa<br><em>Bawat Yugto ng Buhay</em></h2>
-      </div>
-      <p class="section-desc" style="text-align:right; font-size:0.875rem;">Para sa lahat ng may edad 15–35 taon.<br>Blended learning at face-to-face.</p>
-    </div>
-    <div class="programs-grid">
-      <div class="program-card">
-        <div class="program-icon">📚</div>
-        <div class="program-name">Alternative Learning System (ALS)</div>
-        <p class="program-desc">Blended learning — online tuwing gabi, face-to-face tuwing Linggo. Para sa mga nagnanais makumpleto ang pangunahing edukasyon.</p>
-        <span class="program-tag">25 Taon na</span>
-      </div>
-      <div class="program-card">
-        <div class="program-icon">🏫</div>
-        <div class="program-name">Elementarya</div>
-        <p class="program-desc">Grade 1 hanggang Grade 6. Para sa mga hindi nakatapos ng pangunahing edukasyon.</p>
-        <span class="program-tag">Grades 1–6</span>
-      </div>
-      <div class="program-card">
-        <div class="program-icon">🎓</div>
-        <div class="program-name">Hayskul</div>
-        <p class="program-desc">Grade 7 hanggang Grade 10. Non-formal na edukasyon para sa mga nagtatrabahong estudyante.</p>
-        <span class="program-tag">Grades 7–10</span>
-      </div>
-      <div class="program-card">
-        <div class="program-icon">💼</div>
-        <div class="program-name">Caregiving</div>
-        <p class="program-desc">Sertipikasyon sa pag-aalaga ng pasyente. Kasosyo ng UST Simbahayan.</p>
-        <span class="program-tag">TESDA</span>
-      </div>
-      <div class="program-card">
-        <div class="program-icon">📊</div>
-        <div class="program-name">Entrepreneurship & Bookkeeping</div>
-        <p class="program-desc">Pangunahing kaalaman sa negosyo at accounting para sa mga nagnanais mag-negosyo.</p>
-        <span class="program-tag">Sertipikasyon</span>
-      </div>
-      <div class="program-card">
-        <div class="program-icon">🚑</div>
-        <div class="program-name">NSTP at First Aid</div>
-        <p class="program-desc">National Service Training Program at Basic First Aid. Sertipikasyon kasosyo ng UST.</p>
-        <span class="program-tag">UST Simbahayan</span>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="program-card">
+          <div class="program-icon">🎓</div>
+          <h3>Hayskul</h3>
+          <p>Grade 7 hanggang Grade 10. Non-formal na edukasyon para sa mga nagtatrabahong estudyante.</p>
+          <span class="program-badge">Grades 7–10</span>
+          <span class="program-age">Edad 15–35</span>
+        </div>
 
-<!-- CAMPUSES -->
-<section class="campuses" id="campuses">
-  <div class="campuses-inner">
-    <div class="section-label">Mga Campus</div>
-    <h2 class="section-title">Pumili ng <em>Inyong Campus</em></h2>
-    <p class="section-desc">May apat na sentro sa buong Pilipinas. Piliin ang pinakamalapit sa inyo at magsimulang mag-enroll.</p>
-    <div class="campus-grid">
-      <div class="campus-card campus-manila">
-        <div class="campus-location">Manila</div>
-        <div class="campus-name">Holy Family Social & Educational Center</div>
-        <div class="campus-address">1231 A.H. Lacson Street, Sampaloc, Manila</div>
-        <div class="campus-phone">📞 (02) 8731-4882</div>
-        <a href="manila.html" class="campus-enroll">Mag-enroll Dito</a>
-      </div>
-      <div class="campus-card campus-cebu">
-        <div class="campus-location">Cebu</div>
-        <div class="campus-name">Villa Inmaculada Social & Educational Center</div>
-        <div class="campus-address">9 Tres Borces Extension, Kasambagan, Cebu City</div>
-        <div class="campus-phone">📞 (032) 8234-1097</div>
-        <a href="#" class="campus-enroll">Mag-enroll Dito</a>
-      </div>
-      <div class="campus-card campus-iloilo">
-        <div class="campus-location">Iloilo</div>
-        <div class="campus-name">Villa Santa Vicenta Maria Social & Educational Center</div>
-        <div class="campus-address">5 Libertad Street, Jaro, Iloilo City</div>
-        <div class="campus-phone">📞 (033) 8333-1003</div>
-        <a href="#" class="campus-enroll">Mag-enroll Dito</a>
-      </div>
-      <div class="campus-card campus-qc">
-        <div class="campus-location">Quezon City</div>
-        <div class="campus-name">Villa Maria Social & Educational Center</div>
-        <div class="campus-address">53 M. Cuenco Street, Sta. Mesa Heights, Quezon City</div>
-        <div class="campus-phone">📞 (02) 8731-9024</div>
-        <a href="#" class="campus-enroll">Mag-enroll Dito</a>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="program-card">
+          <div class="program-icon">💼</div>
+          <h3>Caregiving</h3>
+          <p>Sertipikasyon sa pag-aalaga ng pasyente. Kasosyo ng UST Simbahayan.</p>
+          <span class="program-badge">TESDA</span>
+          <span class="program-age">Kasosyo: UST Simbahayan</span>
+        </div>
 
-<!-- UST PARTNERSHIP -->
-<section class="partnership" id="partnership">
-  <div class="partnership-inner">
-    <div>
-      <div class="section-label" style="color:var(--gold)">Kasosyo</div>
-      <h2 class="section-title">UST <em>Simbahayan</em><br>Partnership</h2>
-      <div class="gold-divider"></div>
-      <p class="section-desc">Nagtutulungan kami ng University of Santo Tomas Simbahayan upang magbigay ng mas komprehensibong edukasyon at serbisyo sa aming mga estudyante.</p>
-    </div>
-    <div class="collab-grid">
-      <div class="collab-item">
-        <div class="collab-icon">🙏</div>
-        <div class="collab-name">Espiritwalidad</div>
-        <div class="collab-desc">Pagpapalalim ng pananampalataya at espirituwal na pamumuno</div>
-      </div>
-      <div class="collab-item">
-        <div class="collab-icon">⛪</div>
-        <div class="collab-name">Relihiyosong Gawain</div>
-        <div class="collab-desc">Mga aktibidad at programang relihiyoso para sa kabataan</div>
-      </div>
-      <div class="collab-item">
-        <div class="collab-icon">📖</div>
-        <div class="collab-name">Edukasyon</div>
-        <div class="collab-desc">Mga sertipikasyon at kurso sa pakikipagtulungan ng UST</div>
-      </div>
-      <div class="collab-item">
-        <div class="collab-icon">⚖️</div>
-        <div class="collab-name">Katarungan at Kapayapaan</div>
-        <div class="collab-desc">Pagtataguyod ng karapatan at dignidad ng bawat isa</div>
-      </div>
-      <div class="collab-item" style="grid-column: span 2;">
-        <div class="collab-icon">🌿</div>
-        <div class="collab-name">Integridad ng Nilikha</div>
-        <div class="collab-desc">Pag-aalaga at pagpapahalaga sa kalikasan at kapaligiran</div>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="program-card">
+          <div class="program-icon">📊</div>
+          <h3>Entrepreneurship &amp; Bookkeeping</h3>
+          <p>Pangunahing kaalaman sa negosyo at accounting para sa mga nagnanais mag-negosyo.</p>
+          <span class="program-badge">Sertipikasyon</span>
+          <span class="program-age">Edad 15–35</span>
+        </div>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="section-label">Makipag-ugnayan</div>
-    <h2 class="section-title">Handa Kaming <em>Tumulong</em></h2>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-campus">Manila</div>
-        <div class="contact-name">Holy Family Social & Educational Center</div>
-        <div class="contact-detail">1231 A.H. Lacson Street<br>Sampaloc, Manila<br><br>(02) 8731-4882</div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-campus">Cebu</div>
-        <div class="contact-name">Villa Inmaculada Social & Educational Center</div>
-        <div class="contact-detail">9 Tres Borces Extension<br>Kasambagan, Cebu City<br><br>(032) 8234-1097</div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-campus">Iloilo</div>
-        <div class="contact-name">Villa Santa Vicenta Maria Social & Educational Center</div>
-        <div class="contact-detail">5 Libertad Street<br>Jaro, Iloilo City<br><br>(033) 8333-1003</div>
-      </div>
-      <div class="contact-card">
-        <div class="contact-campus">Quezon City</div>
-        <div class="contact-name">Villa Maria Social & Educational Center</div>
-        <div class="contact-detail">53 M. Cuenco Street<br>Sta. Mesa Heights, Quezon City<br><br>(02) 8731-9024</div>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="program-card">
+          <div class="program-icon">🚑</div>
+          <h3>NSTP at First Aid</h3>
+          <p>National Service Training Program at Basic First Aid. Sertipikasyon kasosyo ng UST.</p>
+          <span class="program-badge">UST Simbahayan</span>
+          <span class="program-age">Kasosyo: UST</span>
+        </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">RMI Youth Center</div>
-    <div class="footer-text">
-      © 2026 Religious of Mary Immaculate Youth Center<br>
-      Itinatag noong Hunyo 11, 1876 · Manila · Cebu · Iloilo · Quezon City
+      </div>
     </div>
-    <div class="footer-ust">Kasosyo ng<br><span>UST Simbahayan</span></div>
-  </div>
-</footer>
+  </section>
+
+
+  <!-- ===================== CAMPUSES ===================== -->
+  <section id="campuses">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-eyebrow">Mga Campus</span>
+        <h2 class="section-title">Pumili ng <em>Inyong Campus</em></h2>
+        <p class="section-subtitle">
+          May apat na sentro sa buong Pilipinas. I-click ang kahon para magsimulang mag-enroll.
+        </p>
+      </div>
+
+      <div class="campuses-grid">
+
+        <!--
+          ╔══════════════════════════════════════════════════════╗
+          ║  CAMPUS CARDS — each entire card is clickable        ║
+          ║  Replace href="#" with the actual enrollment URL     ║
+          ║  Replace <div class="campus-img-placeholder">        ║
+          ║    with <img src="manila.jpg" alt="Manila Campus" /> ║
+          ╚══════════════════════════════════════════════════════╝
+        -->
+
+        <!-- MANILA -->
+        <a class="campus-card" href="manila.html" aria-label="Mag-enroll sa Manila">
+          <div class="campus-img-wrap">
+            <!--
+              Replace this block with:
+              <img src="campus-manila.jpg" alt="Manila Campus" />
+            -->
+            <div class="campus-img-placeholder">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+                <rect x="3" y="8" width="30" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="13" cy="17" r="4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 25 L10 18 L16 24 L22 18 L33 25" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+              <span class="ph-label">Manila Campus Photo</span>
+            </div>
+            <span class="campus-city-tag">Manila</span>
+          </div>
+          <div class="campus-body">
+            <h3>Manila</h3>
+            <p class="campus-center-name">Holy Family Social &amp; Educational Center</p>
+            <p class="campus-address">1231 A.H. Lacson Street, Sampaloc, Manila</p>
+            <p class="campus-phone">(02) 8731-4882</p>
+            <span class="campus-enroll-btn">Mag-enroll Dito →</span>
+          </div>
+        </a>
+
+        <!-- CEBU -->
+        <a class="campus-card" href="#" aria-label="Mag-enroll sa Cebu">
+          <div class="campus-img-wrap">
+            <!--
+              Replace with: <img src="campus-cebu.jpg" alt="Cebu Campus" />
+            -->
+            <div class="campus-img-placeholder">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+                <rect x="3" y="8" width="30" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="13" cy="17" r="4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 25 L10 18 L16 24 L22 18 L33 25" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+              <span class="ph-label">Cebu Campus Photo</span>
+            </div>
+            <span class="campus-city-tag">Cebu</span>
+          </div>
+          <div class="campus-body">
+            <h3>Cebu</h3>
+            <p class="campus-center-name">Villa Inmaculada Social &amp; Educational Center</p>
+            <p class="campus-address">9 Tres Borces Extension, Kasambagan, Cebu City</p>
+            <p class="campus-phone">(032) 8234-1097</p>
+            <span class="campus-enroll-btn">Mag-enroll Dito →</span>
+          </div>
+        </a>
+
+        <!-- ILOILO -->
+        <a class="campus-card" href="#" aria-label="Mag-enroll sa Iloilo">
+          <div class="campus-img-wrap">
+            <!--
+              Replace with: <img src="campus-iloilo.jpg" alt="Iloilo Campus" />
+            -->
+            <div class="campus-img-placeholder">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+                <rect x="3" y="8" width="30" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="13" cy="17" r="4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 25 L10 18 L16 24 L22 18 L33 25" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+              <span class="ph-label">Iloilo Campus Photo</span>
+            </div>
+            <span class="campus-city-tag">Iloilo</span>
+          </div>
+          <div class="campus-body">
+            <h3>Iloilo</h3>
+            <p class="campus-center-name">Villa Santa Vicenta Maria Social &amp; Educational Center</p>
+            <p class="campus-address">5 Libertad Street, Jaro, Iloilo City</p>
+            <p class="campus-phone">(033) 8333-1003</p>
+            <span class="campus-enroll-btn">Mag-enroll Dito →</span>
+          </div>
+        </a>
+
+        <!-- QUEZON CITY -->
+        <a class="campus-card" href="#" aria-label="Mag-enroll sa Quezon City">
+          <div class="campus-img-wrap">
+            <!--
+              Replace with: <img src="campus-qc.jpg" alt="Quezon City Campus" />
+            -->
+            <div class="campus-img-placeholder">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+                <rect x="3" y="8" width="30" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="13" cy="17" r="4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M3 25 L10 18 L16 24 L22 18 L33 25" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+              <span class="ph-label">Quezon City Campus Photo</span>
+            </div>
+            <span class="campus-city-tag">Quezon City</span>
+          </div>
+          <div class="campus-body">
+            <h3>Quezon City</h3>
+            <p class="campus-center-name">Villa Maria Social &amp; Educational Center</p>
+            <p class="campus-address">53 M. Cuenco Street, Sta. Mesa Heights, Quezon City</p>
+            <p class="campus-phone">(02) 8731-9024</p>
+            <span class="campus-enroll-btn">Mag-enroll Dito →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SIMBAHAYAN ===================== -->
+  <section id="simbahayan">
+    <div class="container">
+      <div class="simbahayan-inner">
+
+        <!-- Collaboration Photo Carousel -->
+        <div>
+          <span class="section-eyebrow" style="display:block;margin-bottom:.5rem;">UST Simbahayan</span>
+          <h2 class="section-title" style="text-align:left;margin-bottom:1.5rem;">
+            UST <em>Simbahayan</em> Partnership
+          </h2>
+
+          <div class="collab-carousel" id="collabCarousel">
+            <div class="carousel-track" id="carouselTrack">
+
+              <!--
+                ╔══════════════════════════════════════════════╗
+                ║  CAROUSEL SLIDES                             ║
+                ║  Replace each .collab-img-placeholder div   ║
+                ║  with: <img src="collab-1.jpg" alt="..." /> ║
+                ╚══════════════════════════════════════════════╝
+              -->
+
+              <!-- Slide 1 -->
+              <div class="carousel-slide" style="background:linear-gradient(135deg,#1a3a5c,#1e4976);">
+                <div class="collab-img-placeholder">
+                  <svg viewBox="0 0 48 48" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+                    <rect x="4" y="10" width="40" height="30" rx="3" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="18" cy="22" r="5" stroke="currentColor" stroke-width="2"/>
+                    <path d="M4 34 L14 24 L22 32 L30 24 L44 34" stroke="currentColor" stroke-width="2" fill="none"/>
+                  </svg>
+                  <span class="collab-ph-title">Collaboration Photo 1</span>
+                  <span class="collab-ph-sub">UST Simbahayan × RMI Event<br/>Palitan ng inyong larawan</span>
+                </div>
+                <div class="carousel-caption">UST Simbahayan × RMI — Partnership Launch</div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="carousel-slide" style="background:linear-gradient(135deg,#0f2540,#1e6a9e);">
+                <div class="collab-img-placeholder">
+                  <svg viewBox="0 0 48 48" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+                    <circle cx="24" cy="20" r="8" stroke="currentColor" stroke-width="2"/>
+                    <path d="M8 40 C8 32 40 32 40 40" stroke="currentColor" stroke-width="2" fill="none"/>
+                  </svg>
+                  <span class="collab-ph-title">Collaboration Photo 2</span>
+                  <span class="collab-ph-sub">Caregiving Certification Ceremony<br/>Palitan ng inyong larawan</span>
+                </div>
+                <div class="carousel-caption">Caregiving Certification — UST Simbahayan</div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="carousel-slide" style="background:linear-gradient(135deg,#1a3a5c,#2a6fac);">
+                <div class="collab-img-placeholder">
+                  <svg viewBox="0 0 48 48" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+                    <path d="M24 4 L28 16 L40 16 L30 24 L34 36 L24 28 L14 36 L18 24 L8 16 L20 16 Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                  </svg>
+                  <span class="collab-ph-title">Collaboration Photo 3</span>
+                  <span class="collab-ph-sub">NSTP &amp; First Aid Training<br/>Palitan ng inyong larawan</span>
+                </div>
+                <div class="carousel-caption">NSTP &amp; Basic First Aid — Joint Training</div>
+              </div>
+
+              <!-- Slide 4 -->
+              <div class="carousel-slide" style="background:linear-gradient(135deg,#0f2540,#1a3a5c);">
+                <div class="collab-img-placeholder">
+                  <svg viewBox="0 0 48 48" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+                    <rect x="8" y="12" width="32" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <path d="M16 12 L16 8 L32 8 L32 12" stroke="currentColor" stroke-width="2"/>
+                    <line x1="16" y1="20" x2="32" y2="20" stroke="currentColor" stroke-width="1.5"/>
+                    <line x1="16" y1="26" x2="28" y2="26" stroke="currentColor" stroke-width="1.5"/>
+                  </svg>
+                  <span class="collab-ph-title">Collaboration Photo 4</span>
+                  <span class="collab-ph-sub">Community Outreach Program<br/>Palitan ng inyong larawan</span>
+                </div>
+                <div class="carousel-caption">Community Outreach — RMI &amp; UST</div>
+              </div>
+
+            </div><!-- /carousel-track -->
+
+            <!-- Prev / Next buttons -->
+            <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous slide">&#8592;</button>
+            <button class="carousel-btn next" id="carouselNext" aria-label="Next slide">&#8594;</button>
+
+            <!-- Dot indicators -->
+            <div class="carousel-controls" id="carouselDots">
+              <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
+              <button class="carousel-dot"        data-index="1" aria-label="Slide 2"></button>
+              <button class="carousel-dot"        data-index="2" aria-label="Slide 3"></button>
+              <button class="carousel-dot"        data-index="3" aria-label="Slide 4"></button>
+            </div>
+          </div><!-- /collab-carousel -->
+        </div>
+
+        <!-- Pillars list -->
+        <div class="simbahayan-content">
+          <p class="simbahayan-intro">
+            Nagtutulungan kami ng University of Santo Tomas Simbahayan upang magbigay ng mas komprehensibong
+            edukasyon at serbisyo sa aming mga estudyante.
+          </p>
+
+          <div class="pillars-list">
+            <div class="pillar-item">
+              <div class="pillar-icon">🙏</div>
+              <div class="pillar-text">
+                <h4>Espiritwalidad</h4>
+                <p>Pagpapalalim ng pananampalataya at espirituwal na pamumuno.</p>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon">⛪</div>
+              <div class="pillar-text">
+                <h4>Relihiyosong Gawain</h4>
+                <p>Mga aktibidad at programang relihiyoso para sa kabataan.</p>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon">📖</div>
+              <div class="pillar-text">
+                <h4>Edukasyon</h4>
+                <p>Mga sertipikasyon at kurso sa pakikipagtulungan ng UST.</p>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon">⚖️</div>
+              <div class="pillar-text">
+                <h4>Katarungan at Kapayapaan</h4>
+                <p>Pagtataguyod ng karapatan at dignidad ng bawat isa.</p>
+              </div>
+            </div>
+            <div class="pillar-item">
+              <div class="pillar-icon">🌿</div>
+              <div class="pillar-text">
+                <h4>Integridad ng Nilikha</h4>
+                <p>Pag-aalaga at pagpapahalaga sa kalikasan at kapaligiran.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-eyebrow" style="color:var(--gold-light);">Makipag-ugnayan</span>
+        <h2 class="section-title">Handa Kaming <em>Tumulong</em></h2>
+        <p class="section-subtitle">Makipag-ugnayan sa pinakamalapit na kampus sa inyo.</p>
+      </div>
+
+      <div class="contact-grid">
+
+        <div class="contact-card">
+          <span class="city">Manila</span>
+          <h4>Holy Family Social &amp; Educational Center</h4>
+          <address>
+            1231 A.H. Lacson Street<br/>
+            Sampaloc, Manila
+            <div class="phone">📞 (02) 8731-4882</div>
+          </address>
+        </div>
+
+        <div class="contact-card">
+          <span class="city">Cebu</span>
+          <h4>Villa Inmaculada Social &amp; Educational Center</h4>
+          <address>
+            9 Tres Borces Extension<br/>
+            Kasambagan, Cebu City
+            <div class="phone">📞 (032) 8234-1097</div>
+          </address>
+        </div>
+
+        <div class="contact-card">
+          <span class="city">Iloilo</span>
+          <h4>Villa Santa Vicenta Maria Social &amp; Educational Center</h4>
+          <address>
+            5 Libertad Street<br/>
+            Jaro, Iloilo City
+            <div class="phone">📞 (033) 8333-1003</div>
+          </address>
+        </div>
+
+        <div class="contact-card">
+          <span class="city">Quezon City</span>
+          <h4>Villa Maria Social &amp; Educational Center</h4>
+          <address>
+            53 M. Cuenco Street<br/>
+            Sta. Mesa Heights, Quezon City
+            <div class="phone">📞 (02) 8731-9024</div>
+          </address>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <p>
+      &copy; 2025 <strong>RMI Youth Center</strong> — Religious of Mary Immaculate &nbsp;·&nbsp;
+      Established 1876, Madrid, Spain &nbsp;·&nbsp;
+      "Prayer facilitates everything."
+    </p>
+  </footer>
+
+
+  <!-- ===================== CAROUSEL JS ===================== -->
+  <script>
+    (function () {
+      const track  = document.getElementById('carouselTrack');
+      const dots   = document.querySelectorAll('.carousel-dot');
+      const prev   = document.getElementById('carouselPrev');
+      const next   = document.getElementById('carouselNext');
+      let current  = 0;
+      const total  = dots.length;
+      let timer;
+
+      function goTo(index) {
+        current = (index + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach(d => d.classList.remove('active'));
+        dots[current].classList.add('active');
+      }
+
+      function autoPlay() { timer = setInterval(() => goTo(current + 1), 4500); }
+      function stopPlay()  { clearInterval(timer); }
+
+      prev.addEventListener('click', () => { stopPlay(); goTo(current - 1); autoPlay(); });
+      next.addEventListener('click', () => { stopPlay(); goTo(current + 1); autoPlay(); });
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          stopPlay();
+          goTo(parseInt(dot.dataset.index));
+          autoPlay();
+        });
+      });
+
+      // Pause on hover
+      const carousel = document.getElementById('collabCarousel');
+      carousel.addEventListener('mouseenter', stopPlay);
+      carousel.addEventListener('mouseleave', autoPlay);
+
+      autoPlay();
+    })();
+  </script>
 
 </body>
 </html>
