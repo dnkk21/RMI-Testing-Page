@@ -283,14 +283,14 @@ a   { color: inherit; text-decoration: none; }
 .photo-slot:hover { border-color: var(--gold); }
 .photo-slot .ps-icon  { font-size: 1.6rem; opacity: .3; }
 .photo-slot .ps-label { font-size: .6rem; color: rgba(255,255,255,.3); letter-spacing: .08em; text-transform: uppercase; }
-.photo-slot::after {
-  content: '📷 ILAGAY LARAWAN';
+/* .photo-slot::after {
+  content: '📷 MGA LARAWAN';
   position: absolute; bottom: 0; left: 0; right: 0;
   background: rgba(200,168,75,.9); color: var(--navy-dark);
   font-size: .58rem; font-weight: 700; letter-spacing: .06em;
   text-align: center; padding: 4px;
   transform: translateY(100%); transition: transform .2s;
-}
+} */
 .photo-slot:hover::after { transform: translateY(0); }
 .photo-slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
@@ -652,9 +652,9 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
             ╚═══════════════════════════════════════════════════════╝
           -->
           <div class="facility-placeholder">
-            <div class="ph-icon">🏫</div>
-            <div class="ph-label">Main Building Photo</div>
-            <div class="ph-hint">📷 I-replace ng larawan ng gusali</div>
+            <div class="ph-icon"><img src="/qc_pictures/RMI QC.png" alt="Campus"></div>
+            <!-- <div class="ph-label">Main Building Photo</div> -->
+            <!-- <div class="ph-hint">📷 I-replace ng larawan ng gusali</div> -->
           </div>
         </div>
 
@@ -670,10 +670,8 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
           ╚═══════════════════════════════════════════════════════╝
         -->
         <div class="photo-gallery">
-          <div class="photo-slot"><div class="ps-icon">🏛️</div><div class="ps-label">Silid-Aralan</div></div>
-          <div class="photo-slot"><div class="ps-icon">📚</div><div class="ps-label">Aklatan</div></div>
-          <div class="photo-slot"><div class="ps-icon">👨‍🏫</div><div class="ps-label">Guro</div></div>
-          <div class="photo-slot"><div class="ps-icon">🎓</div><div class="ps-label">Graduation</div></div>
+          <div class="photo-slot"><div class="ps-icon"><img src="/qc_pictures/RMI QC Community.png" alt="Description"></div><div class="ps-label">Komunidad</div></div>
+          <div class="photo-slot"><div class="ps-icon"><img src="/qc_pictures/RMI QC Students 1.png" alt="Description"></div><div class="ps-label">Mga Estudyante</div></div>
         </div>
 
       </div>
@@ -838,7 +836,7 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
 <section class="team-section" id="team">
   <div class="container">
     <span class="section-eyebrow">Mga Guro at Kawani</span>
-    <h2 class="section-title">Kilalanin ang <em>Aming Koponan</em></h2>
+    <h2 class="section-title">Kilalanin ang <em>Aming Direktor</em></h2>
 
     <div class="faculty-grid">
 
@@ -863,19 +861,18 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
           <div class="fp-hint">Ilagay larawan</div>
         </div>
         <div class="faculty-info">
-          <div class="faculty-name">Pangalan ng Guro</div><!-- ✏️ BRANCH-SPECIFIC -->
-          <div class="faculty-role">Campus Coordinator</div><!-- ✏️ BRANCH-SPECIFIC -->
-        </div>
+          <div class="faculty-name">Miss Ma'am</div>
+          <div class="faculty-role">Campus Directress</div>
       </div>
 
-      <div class="faculty-card">
+      <!-- <div class="faculty-card">
         <div class="faculty-photo">
           <div class="fp-icon">👨‍🏫</div>
           <div class="fp-hint">Ilagay larawan</div>
         </div>
         <div class="faculty-info">
-          <div class="faculty-name">Pangalan ng Guro</div><!-- ✏️ BRANCH-SPECIFIC -->
-          <div class="faculty-role">ALS Teacher</div><!-- ✏️ BRANCH-SPECIFIC -->
+          <div class="faculty-name">Pangalan ng Guro</div><
+          <div class="faculty-role">ALS Teacher</div>
         </div>
       </div>
 
@@ -885,10 +882,8 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
           <div class="fp-hint">Ilagay larawan</div>
         </div>
         <div class="faculty-info">
-          <div class="faculty-name">Pangalan ng Guro</div><!-- ✏️ BRANCH-SPECIFIC -->
-          <div class="faculty-role">TESDA Instructor</div><!-- ✏️ BRANCH-SPECIFIC -->
-        </div>
-      </div>
+          <div class="faculty-name">Pangalan ng Guro</div>
+          <div class="faculty-role">TESDA Instructor</div>
 
       <div class="faculty-card">
         <div class="faculty-photo">
@@ -896,10 +891,10 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
           <div class="fp-hint">Ilagay larawan</div>
         </div>
         <div class="faculty-info">
-          <div class="faculty-name">Pangalan ng Guro</div><!-- ✏️ BRANCH-SPECIFIC -->
-          <div class="faculty-role">Admin Staff</div><!-- ✏️ BRANCH-SPECIFIC -->
+          <div class="faculty-name">Pangalan ng Guro</div>
+          <div class="faculty-role">Admin Staff</div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
