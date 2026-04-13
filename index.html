@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RMI Youth Center</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)" />
-  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin />
-  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap)" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     /* =========================================================
@@ -32,9 +31,9 @@
       --text-mid:   #3d5170;
       --text-light: #6b80a0;
       --border:     #c8d8ea;
-      --shadow-sm:  0 2px 8px rgba(26,58,92,.10);
-      --shadow-md:  0 6px 24px rgba(26,58,92,.14);
-      --shadow-lg:  0 12px 40px rgba(26,58,92,.18);
+      --shadow-sm:  0 2px 8px rgba(26,58,92,.05);
+      --shadow-md:  0 6px 24px rgba(26,58,92,.08);
+      --shadow-lg:  0 12px 40px rgba(26,58,92,.12);
       --radius-sm:  6px;
       --radius-md:  12px;
       --radius-lg:  20px;
@@ -52,8 +51,19 @@
       background: var(--off-white);
     }
 
-    img { display: block; max-width: 100%; }
-    a  { color: inherit; text-decoration: none; }
+    img { 
+      display: block; 
+      max-width: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit; 
+    }
+
+    a { 
+      color: inherit; 
+      text-decoration: none; 
+    }
 
     /* =========================================================
        TYPOGRAPHY HELPERS
@@ -111,9 +121,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--navy-dark);
+      background: var(--white);
       border-bottom: 3px solid var(--gold);
       padding: .9rem 0;
+      box-shadow: var(--shadow-sm);
     }
 
     .navbar .container {
@@ -134,23 +145,21 @@
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue-light), var(--navy-mid));
+      background: linear-gradient(135deg, var(--blue-pale), var(--blue-light));
       border: 2px solid var(--gold);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: var(--white);
+      color: var(--navy-dark);
       font-size: .45rem;
       font-weight: 700;
       letter-spacing: .04em;
       text-align: center;
       overflow: hidden;
       flex-shrink: 0;
-      /* ── REPLACE: swap this block with an <img> tag ── */
     }
 
-    /* If you place an actual <img> inside .logo-placeholder, it fills perfectly */
     .logo-placeholder img {
       width: 100%;
       height: 100%;
@@ -165,7 +174,7 @@
       font-size: .65rem;
       font-weight: 700;
       letter-spacing: .08em;
-      color: var(--gold-light);
+      color: var(--gold);
       text-transform: uppercase;
     }
 
@@ -174,13 +183,13 @@
       font-family: var(--font-serif);
       font-size: 1rem;
       font-weight: 700;
-      color: var(--white);
+      color: var(--navy-dark);
     }
 
     .logo-text-stack .tagline {
       display: block;
       font-size: .65rem;
-      color: rgba(255,255,255,.6);
+      color: var(--text-mid);
     }
 
     .navbar-links {
@@ -192,7 +201,7 @@
     .navbar-links a {
       font-size: .88rem;
       font-weight: 600;
-      color: rgba(255,255,255,.8);
+      color: var(--text-mid);
       letter-spacing: .03em;
       transition: color .2s;
       padding-bottom: 2px;
@@ -200,7 +209,7 @@
     }
 
     .navbar-links a:hover {
-      color: var(--gold-light);
+      color: var(--navy-mid);
       border-color: var(--gold);
     }
 
@@ -208,7 +217,7 @@
        HERO
     ========================================================= */
     .hero {
-      background: linear-gradient(155deg, var(--navy-dark) 0%, var(--navy-mid) 55%, #1e6a9e 100%);
+      background: linear-gradient(155deg, var(--white) 0%, var(--blue-wash) 55%, var(--blue-pale) 100%);
       padding-block: 6rem 5rem;
       position: relative;
       overflow: hidden;
@@ -220,7 +229,7 @@
       inset: 0;
       background:
         radial-gradient(ellipse 60% 50% at 80% 50%, rgba(91,155,213,.15) 0%, transparent 70%),
-        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='[w3.org](http://www.w3.org/2000/svg)'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a3a5c' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
       pointer-events: none;
     }
 
@@ -232,21 +241,19 @@
       align-items: center;
     }
 
-    .hero-content {}
-
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: .5rem;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.15);
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: 50px;
       padding: .3rem .9rem;
       font-size: .75rem;
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--gold-light);
+      color: var(--gold);
       margin-bottom: 1.5rem;
     }
 
@@ -259,19 +266,19 @@
       font-family: var(--font-serif);
       font-size: clamp(2rem, 4.5vw, 3.2rem);
       font-weight: 700;
-      color: var(--white);
+      color: var(--navy-dark);
       line-height: 1.2;
       margin-bottom: 1.25rem;
     }
 
     .hero h1 em {
       font-style: italic;
-      color: var(--gold-light);
+      color: var(--blue-light);
     }
 
     .hero-desc {
       font-size: 1.05rem;
-      color: rgba(255,255,255,.8);
+      color: var(--text-mid);
       margin-bottom: 1rem;
       max-width: 460px;
     }
@@ -280,7 +287,7 @@
       font-family: var(--font-serif);
       font-style: italic;
       font-size: 1rem;
-      color: var(--gold-light);
+      color: var(--navy-mid);
       border-left: 3px solid var(--gold);
       padding-left: 1rem;
       margin: 1.5rem 0 2rem;
@@ -321,46 +328,43 @@
 
     .btn-outline {
       background: transparent;
-      border-color: rgba(255,255,255,.4);
-      color: var(--white);
+      border-color: var(--navy);
+      color: var(--navy);
     }
 
     .btn-outline:hover {
-      background: rgba(255,255,255,.1);
-      border-color: var(--white);
+      background: var(--blue-pale);
+      border-color: var(--navy-dark);
+      color: var(--navy-dark);
       transform: translateY(-2px);
     }
 
-    /* Hero stats */
     .hero-stats {
       display: flex;
       gap: 2rem;
       margin-top: 2.5rem;
       padding-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,.12);
+      border-top: 1px solid var(--border);
     }
-
-    .hero-stat {}
 
     .hero-stat .num {
       display: block;
       font-family: var(--font-serif);
       font-size: 2rem;
       font-weight: 700;
-      color: var(--gold-light);
+      color: var(--navy);
       line-height: 1;
     }
 
     .hero-stat .lbl {
       display: block;
       font-size: .75rem;
-      color: rgba(255,255,255,.6);
+      color: var(--text-light);
       text-transform: uppercase;
       letter-spacing: .07em;
       margin-top: .25rem;
     }
 
-    /* Hero image panel */
     .hero-image-panel {
       position: relative;
     }
@@ -369,12 +373,11 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-lg);
-      border: 3px solid rgba(255,255,255,.12);
+      border: 3px solid var(--white);
       aspect-ratio: 4/3;
-      background: linear-gradient(135deg, rgba(91,155,213,.3), rgba(26,58,92,.6));
+      background: linear-gradient(135deg, var(--blue-wash), var(--blue-pale));
     }
 
-    /* ---- PLACEHOLDER: replace this SVG with your actual <img> ---- */
     .hero-img-wrap img,
     .img-placeholder {
       width: 100%;
@@ -388,8 +391,8 @@
       align-items: center;
       justify-content: center;
       gap: .5rem;
-      background: linear-gradient(135deg, var(--navy-mid), #2a6fac);
-      color: rgba(255,255,255,.5);
+      background: linear-gradient(135deg, var(--blue-pale), #b8d4ee);
+      color: var(--navy-mid);
       font-size: .8rem;
       text-align: center;
       padding: 1rem;
@@ -403,7 +406,7 @@
 
     .img-placeholder span {
       font-size: .75rem;
-      opacity: .6;
+      opacity: .8;
     }
 
     .hero-badge {
@@ -476,7 +479,6 @@
       font-style: italic;
     }
 
-    /* Mission / Vision cards */
     .mv-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -611,9 +613,8 @@
       gap: 1.75rem;
     }
 
-    /* The entire card is clickable */
     .campus-card {
-      display: block;           /* <a> as block */
+      display: block;
       background: var(--white);
       border: 2px solid var(--border);
       border-radius: var(--radius-md);
@@ -635,7 +636,6 @@
       background: var(--navy-dark);
     }
 
-    /* Campus image area */
     .campus-img-wrap {
       aspect-ratio: 16/9;
       overflow: hidden;
@@ -652,7 +652,6 @@
 
     .campus-card:hover .campus-img-wrap img { transform: scale(1.05); }
 
-    /* ---- Campus image placeholder (remove when you add real photos) ---- */
     .campus-img-placeholder {
       width: 100%;
       height: 100%;
@@ -695,7 +694,6 @@
       border-radius: 50px;
     }
 
-    /* Campus body */
     .campus-body {
       padding: 1.25rem 1.25rem 1rem;
     }
@@ -765,14 +763,13 @@
       align-items: start;
     }
 
-    /* Carousel */
     .collab-carousel {
       position: relative;
       border-radius: var(--radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-md);
       border: 3px solid var(--border);
-      background: var(--navy);
+      background: var(--white);
     }
 
     .carousel-track {
@@ -792,7 +789,6 @@
       object-fit: cover;
     }
 
-    /* ---- Collab image placeholders ---- */
     .collab-img-placeholder {
       width: 100%;
       height: 100%;
@@ -802,7 +798,7 @@
       justify-content: center;
       gap: .6rem;
       font-size: .82rem;
-      color: rgba(255,255,255,.7);
+      color: var(--navy-mid);
       text-align: center;
       padding: 1.5rem;
     }
@@ -810,21 +806,21 @@
     .collab-img-placeholder svg {
       width: 48px;
       height: 48px;
-      opacity: .4;
+      opacity: .6;
     }
 
     .collab-img-placeholder .collab-ph-title {
       font-weight: 700;
-      color: var(--gold-light);
+      color: var(--navy-dark);
       font-size: .85rem;
     }
 
     .collab-img-placeholder .collab-ph-sub {
       font-size: .72rem;
-      opacity: .6;
+      opacity: .8;
+      color: var(--text-mid);
     }
 
-    /* Carousel controls */
     .carousel-controls {
       position: absolute;
       bottom: .85rem;
@@ -839,7 +835,7 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: rgba(255,255,255,.4);
+      background: rgba(26,58,92,.3);
       border: none;
       cursor: pointer;
       transition: all .2s;
@@ -847,7 +843,7 @@
     }
 
     .carousel-dot.active {
-      background: var(--gold-light);
+      background: var(--navy);
       transform: scale(1.3);
     }
 
@@ -855,8 +851,8 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(0,0,0,.35);
-      color: var(--white);
+      background: rgba(255,255,255,.7);
+      color: var(--navy);
       border: none;
       width: 34px;
       height: 34px;
@@ -868,30 +864,29 @@
       justify-content: center;
       transition: background .2s;
       z-index: 5;
+      box-shadow: var(--shadow-sm);
     }
 
-    .carousel-btn:hover { background: rgba(0,0,0,.6); }
+    .carousel-btn:hover { background: rgba(255,255,255,.9); }
     .carousel-btn.prev  { left: .6rem; }
     .carousel-btn.next  { right: .6rem; }
 
-    /* Caption overlay */
     .carousel-caption {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
       padding: 2rem 1.25rem .9rem;
-      background: linear-gradient(to top, rgba(0,0,0,.7), transparent);
-      color: var(--white);
+      background: linear-gradient(to top, rgba(255,255,255,.9), transparent);
+      color: var(--navy-dark);
       font-size: .8rem;
+      font-weight: 600;
       opacity: 0;
       transition: opacity .3s;
     }
 
     .carousel-slide:hover .carousel-caption { opacity: 1; }
 
-    /* Simbahayan pillars */
-    .simbahayan-content {}
     .simbahayan-content .section-title { text-align: left; }
 
     .simbahayan-intro {
@@ -944,20 +939,70 @@
     }
 
     /* =========================================================
+       AWARDS (NEW SECTION)
+    ========================================================= */
+    #awards {
+      background: var(--white);
+    }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .award-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .award-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--gold);
+    }
+
+    .award-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+
+    .award-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: .6rem;
+    }
+
+    .award-card p {
+      font-size: .85rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* =========================================================
        CONTACT
     ========================================================= */
     #contact {
-      background: var(--navy-dark);
-      color: var(--white);
+      background: var(--blue-wash);
+      color: var(--text-dark);
+      border-top: 1px solid var(--border);
     }
 
     #contact .section-title {
-      color: var(--white);
+      color: var(--navy);
     }
 
-    #contact .section-title em { color: var(--gold-light); }
+    #contact .section-title em { color: var(--blue-light); }
 
-    #contact .section-subtitle { color: rgba(255,255,255,.65); }
+    #contact .section-subtitle { color: var(--text-mid); }
 
     .contact-grid {
       display: grid;
@@ -966,16 +1011,17 @@
     }
 
     .contact-card {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
+      background: var(--white);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 1.5rem;
       transition: all .25s;
     }
 
     .contact-card:hover {
-      background: rgba(255,255,255,.1);
-      border-color: rgba(255,255,255,.2);
+      background: var(--off-white);
+      border-color: var(--blue-light);
+      box-shadow: var(--shadow-sm);
     }
 
     .contact-card .city {
@@ -995,7 +1041,7 @@
       font-family: var(--font-serif);
       font-size: .95rem;
       font-style: italic;
-      color: var(--blue-pale);
+      color: var(--navy);
       margin-bottom: .6rem;
       line-height: 1.4;
     }
@@ -1003,7 +1049,7 @@
     .contact-card address {
       font-style: normal;
       font-size: .82rem;
-      color: rgba(255,255,255,.65);
+      color: var(--text-mid);
       line-height: 1.6;
     }
 
@@ -1012,7 +1058,7 @@
       align-items: center;
       gap: .35rem;
       margin-top: .5rem;
-      color: var(--gold-light);
+      color: var(--navy-mid);
       font-size: .82rem;
       font-weight: 600;
     }
@@ -1021,15 +1067,16 @@
        FOOTER
     ========================================================= */
     footer {
-      background: #080f1a;
-      color: rgba(255,255,255,.45);
+      background: var(--off-white);
+      color: var(--text-mid);
       text-align: center;
       padding: 2rem 1rem;
       font-size: .8rem;
+      border-top: 1px solid var(--border);
     }
 
     footer strong {
-      color: var(--gold-light);
+      color: var(--navy);
       font-weight: 700;
     }
 
@@ -1054,24 +1101,11 @@
 
 <body>
 
-  <!-- ===================== NAVBAR ===================== -->
   <nav class="navbar">
     <div class="container">
       <div class="navbar-brand">
-
-        <!--
-          ╔══════════════════════════════════════════════════════╗
-          ║  LOGO PLACEHOLDER                                    ║
-          ║  Replace the content below with:                    ║
-          ║  <img src="your-logo.png" alt="RMI Logo" />         ║
-          ╚══════════════════════════════════════════════════════╝
-        -->
         <div class="logo-placeholder" aria-label="RMI Logo — replace with actual logo">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
-            <circle cx="14" cy="14" r="13" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
-            <path d="M14 4 C14 4 8 9 8 14 C8 17.31 10.69 20 14 20 C17.31 20 20 17.31 20 14 C20 9 14 4 14 4Z" fill="rgba(200,168,75,0.7)"/>
-            <circle cx="14" cy="14" r="3" fill="white" opacity="0.9"/>
-          </svg>
+          <img src="RMI_logo.png" alt="RMI Logo" />
         </div>
 
         <div class="logo-text-stack">
@@ -1086,13 +1120,13 @@
         <li><a href="#programs">Mga Programa</a></li>
         <li><a href="#campuses">Mga Campus</a></li>
         <li><a href="#simbahayan">Simbahayan</a></li>
+        <li><a href="#awards">Mga Parangal</a></li>
         <li><a href="#contact">Makipag-ugnayan</a></li>
       </ul>
     </div>
   </nav>
 
 
-  <!-- ===================== HERO ===================== -->
   <section class="hero" id="home">
     <div class="container">
       <div class="hero-content">
@@ -1104,7 +1138,7 @@
 
         <p class="hero-desc">
           Nagbibigay ng de-kalidad na edukasyon at kabuhayan sa mga kabataang
-          may edad <strong style="color:var(--gold-light)">15–35</strong>
+          may edad <strong style="color:var(--gold)">15–35</strong>
           sa Manila, Cebu, Iloilo, at Quezon City.
         </p>
 
@@ -1131,15 +1165,10 @@
         </div>
       </div>
 
-      <!-- Hero decorative image panel — replace placeholder with real photo -->
       <div class="hero-image-panel">
         <div class="hero-img-wrap">
-          <!--
-            Replace the div below with:
-            <img src="hero-photo.jpg" alt="RMI Youth Center Students" />
-          -->
           <div class="img-placeholder">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="4" y="10" width="40" height="30" rx="3" stroke="currentColor" stroke-width="2"/>
               <circle cx="18" cy="22" r="5" stroke="currentColor" stroke-width="2"/>
               <path d="M4 34 L14 24 L22 32 L30 24 L44 34" stroke="currentColor" stroke-width="2" fill="none"/>
@@ -1157,25 +1186,12 @@
   </section>
 
 
-  <!-- ===================== ABOUT ===================== -->
   <section id="about">
     <div class="container">
       <div class="about-grid">
 
-        <!-- About image — replace placeholder -->
         <div class="about-img-wrap">
-          <!--
-            Replace with:
-            <img src="about-photo.jpg" alt="RMI Youth Center" />
-          -->
-          <div class="img-placeholder" style="background:linear-gradient(135deg,var(--blue-pale),#b8d4ee);color:var(--navy-mid);">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)" style="width:48px;height:48px;opacity:.5;">
-              <rect x="4" y="10" width="40" height="30" rx="3" stroke="currentColor" stroke-width="2"/>
-              <circle cx="18" cy="22" r="5" stroke="currentColor" stroke-width="2"/>
-              <path d="M4 34 L14 24 L22 32 L30 24 L44 34" stroke="currentColor" stroke-width="2" fill="none"/>
-            </svg>
-            <span style="font-size:.8rem;opacity:.7;">About / History Photo</span>
-          </div>
+          <img src="index_img/Saint.jpeg" alt="About RMI Youth Center" />
         </div>
 
         <div class="about-content">
@@ -1209,7 +1225,6 @@
   </section>
 
 
-  <!-- ===================== PROGRAMS ===================== -->
   <section id="programs">
     <div class="container">
       <div class="text-center">
@@ -1274,7 +1289,6 @@
   </section>
 
 
-  <!-- ===================== CAMPUSES ===================== -->
   <section id="campuses">
     <div class="container">
       <div class="text-center">
@@ -1287,30 +1301,9 @@
 
       <div class="campuses-grid">
 
-        <!--
-          ╔══════════════════════════════════════════════════════╗
-          ║  CAMPUS CARDS — each entire card is clickable        ║
-          ║  Replace href="#" with the actual enrollment URL     ║
-          ║  Replace <div class="campus-img-placeholder">        ║
-          ║    with <img src="manila.jpg" alt="Manila Campus" /> ║
-          ╚══════════════════════════════════════════════════════╝
-        -->
-
-        <!-- MANILA -->
         <a class="campus-card" href="manila.html" aria-label="Mag-enroll sa Manila">
           <div class="campus-img-wrap">
-            <!--
-              Replace this block with:
-              <img src="campus-manila.jpg" alt="Manila Campus" />
-            -->
-            <div class="campus-img-placeholder">
-              <svg viewBox="0 0 36 36" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
-                <rect x="3" y="8" width="30" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="13" cy="17" r="4" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M3 25 L10 18 L16 24 L22 18 L33 25" stroke="currentColor" stroke-width="1.5" fill="none"/>
-              </svg>
-              <span class="ph-label">Manila Campus Photo</span>
-            </div>
+            <img src="index_img/manila.png" alt="Manila Campus" />
             <span class="campus-city-tag">Manila</span>
           </div>
           <div class="campus-body">
@@ -1322,20 +1315,9 @@
           </div>
         </a>
 
-        <!-- CEBU -->
         <a class="campus-card" href="#" aria-label="Mag-enroll sa Cebu">
           <div class="campus-img-wrap">
-            <!--
-              Replace with: <img src="campus-cebu.jpg" alt="Cebu Campus" />
-            -->
-            <div class="campus-img-placeholder">
-              <svg viewBox="0 0 36 36" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
-                <rect x="3" y="8" width="30" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="13" cy="17" r="4" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M3 25 L10 18 L16 24 L22 18 L33 25" stroke="currentColor" stroke-width="1.5" fill="none"/>
-              </svg>
-              <span class="ph-label">Cebu Campus Photo</span>
-            </div>
+            <img src="index_img/cebu.png" alt="Manila Campus" />
             <span class="campus-city-tag">Cebu</span>
           </div>
           <div class="campus-body">
@@ -1347,20 +1329,9 @@
           </div>
         </a>
 
-        <!-- ILOILO -->
         <a class="campus-card" href="#" aria-label="Mag-enroll sa Iloilo">
           <div class="campus-img-wrap">
-            <!--
-              Replace with: <img src="campus-iloilo.jpg" alt="Iloilo Campus" />
-            -->
-            <div class="campus-img-placeholder">
-              <svg viewBox="0 0 36 36" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
-                <rect x="3" y="8" width="30" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="13" cy="17" r="4" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M3 25 L10 18 L16 24 L22 18 L33 25" stroke="currentColor" stroke-width="1.5" fill="none"/>
-              </svg>
-              <span class="ph-label">Iloilo Campus Photo</span>
-            </div>
+            <img src="index_img/ilo.png" alt="Manila Campus" />
             <span class="campus-city-tag">Iloilo</span>
           </div>
           <div class="campus-body">
@@ -1372,21 +1343,10 @@
           </div>
         </a>
 
-        <!-- QUEZON CITY -->
         <a class="campus-card" href="kyusi.html" aria-label="Mag-enroll sa Quezon City">
           <div class="campus-img-wrap">
-            <!--
-              Replace with: <img src="campus-qc.jpg" alt="Quezon City Campus" />
-            -->
-            <div class="campus-img-placeholder">
-              <svg viewBox="0 0 36 36" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
-                <rect x="3" y="8" width="30" height="22" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="13" cy="17" r="4" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M3 25 L10 18 L16 24 L22 18 L33 25" stroke="currentColor" stroke-width="1.5" fill="none"/>
-              </svg>
-              <span class="ph-label">Quezon City Campus Photo</span>
-            </div>
-            <span class="campus-city-tag">Quezon City</span>
+              <img src="index_img/kyusi.png" alt="Manila Campus" />
+              <span class="campus-city-tag">Quezon City</span>
           </div>
           <div class="campus-body">
             <h3>Quezon City</h3>
@@ -1402,12 +1362,10 @@
   </section>
 
 
-  <!-- ===================== SIMBAHAYAN ===================== -->
   <section id="simbahayan">
     <div class="container">
       <div class="simbahayan-inner">
 
-        <!-- Collaboration Photo Carousel -->
         <div>
           <span class="section-eyebrow" style="display:block;margin-bottom:.5rem;">UST Simbahayan</span>
           <h2 class="section-title" style="text-align:left;margin-bottom:1.5rem;">
@@ -1417,85 +1375,40 @@
           <div class="collab-carousel" id="collabCarousel">
             <div class="carousel-track" id="carouselTrack">
 
-              <!--
-                ╔══════════════════════════════════════════════╗
-                ║  CAROUSEL SLIDES                             ║
-                ║  Replace each .collab-img-placeholder div   ║
-                ║  with: <img src="collab-1.jpg" alt="..." /> ║
-                ╚══════════════════════════════════════════════╝
-              -->
-
-              <!-- Slide 1 -->
-              <div class="carousel-slide" style="background:linear-gradient(135deg,#1a3a5c,#1e4976);">
-                <div class="collab-img-placeholder">
-                  <svg viewBox="0 0 48 48" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
-                    <rect x="4" y="10" width="40" height="30" rx="3" stroke="currentColor" stroke-width="2"/>
-                    <circle cx="18" cy="22" r="5" stroke="currentColor" stroke-width="2"/>
-                    <path d="M4 34 L14 24 L22 32 L30 24 L44 34" stroke="currentColor" stroke-width="2" fill="none"/>
-                  </svg>
-                  <span class="collab-ph-title">Collaboration Photo 1</span>
-                  <span class="collab-ph-sub">UST Simbahayan × RMI Event<br/>Palitan ng inyong larawan</span>
-                </div>
+              <div class="carousel-slide" style="background:linear-gradient(135deg,var(--blue-wash),var(--blue-pale));">
+                <img src="index_img/partner.jpeg" alt="UST Simbahayan Event" />
                 <div class="carousel-caption">UST Simbahayan × RMI — Partnership Launch</div>
               </div>
 
-              <!-- Slide 2 -->
-              <div class="carousel-slide" style="background:linear-gradient(135deg,#0f2540,#1e6a9e);">
-                <div class="collab-img-placeholder">
-                  <svg viewBox="0 0 48 48" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
-                    <circle cx="24" cy="20" r="8" stroke="currentColor" stroke-width="2"/>
-                    <path d="M8 40 C8 32 40 32 40 40" stroke="currentColor" stroke-width="2" fill="none"/>
-                  </svg>
-                  <span class="collab-ph-title">Collaboration Photo 2</span>
-                  <span class="collab-ph-sub">Caregiving Certification Ceremony<br/>Palitan ng inyong larawan</span>
-                </div>
+              <div class="carousel-slide" style="background:linear-gradient(135deg,var(--off-white),var(--blue-pale));">
+               <img src="index_img/Caregiving 1.jpeg" alt="UST Simbahayan Event" />
                 <div class="carousel-caption">Caregiving Certification — UST Simbahayan</div>
               </div>
 
-              <!-- Slide 3 -->
-              <div class="carousel-slide" style="background:linear-gradient(135deg,#1a3a5c,#2a6fac);">
-                <div class="collab-img-placeholder">
-                  <svg viewBox="0 0 48 48" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
-                    <path d="M24 4 L28 16 L40 16 L30 24 L34 36 L24 28 L14 36 L18 24 L8 16 L20 16 Z" stroke="currentColor" stroke-width="2" fill="none"/>
-                  </svg>
-                  <span class="collab-ph-title">Collaboration Photo 3</span>
-                  <span class="collab-ph-sub">NSTP &amp; First Aid Training<br/>Palitan ng inyong larawan</span>
-                </div>
+              <div class="carousel-slide" style="background:linear-gradient(135deg,var(--blue-wash),#b8d4ee);">
+               <img src="index_img/NSTP 7.jpg" alt="UST Simbahayan Event" />
                 <div class="carousel-caption">NSTP &amp; Basic First Aid — Joint Training</div>
               </div>
 
-              <!-- Slide 4 -->
-              <div class="carousel-slide" style="background:linear-gradient(135deg,#0f2540,#1a3a5c);">
-                <div class="collab-img-placeholder">
-                  <svg viewBox="0 0 48 48" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
-                    <rect x="8" y="12" width="32" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
-                    <path d="M16 12 L16 8 L32 8 L32 12" stroke="currentColor" stroke-width="2"/>
-                    <line x1="16" y1="20" x2="32" y2="20" stroke="currentColor" stroke-width="1.5"/>
-                    <line x1="16" y1="26" x2="28" y2="26" stroke="currentColor" stroke-width="1.5"/>
-                  </svg>
-                  <span class="collab-ph-title">Collaboration Photo 4</span>
-                  <span class="collab-ph-sub">Community Outreach Program<br/>Palitan ng inyong larawan</span>
-                </div>
+              <div class="carousel-slide" style="background:linear-gradient(135deg,var(--white),var(--blue-wash));">
+                <img src="index_img/outreach.jpeg" alt="UST Simbahayan Event" />
                 <div class="carousel-caption">Community Outreach — RMI &amp; UST</div>
               </div>
 
-            </div><!-- /carousel-track -->
+            </div>
 
-            <!-- Prev / Next buttons -->
             <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous slide">&#8592;</button>
             <button class="carousel-btn next" id="carouselNext" aria-label="Next slide">&#8594;</button>
 
-            <!-- Dot indicators -->
             <div class="carousel-controls" id="carouselDots">
               <button class="carousel-dot active" data-index="0" aria-label="Slide 1"></button>
               <button class="carousel-dot"        data-index="1" aria-label="Slide 2"></button>
               <button class="carousel-dot"        data-index="2" aria-label="Slide 3"></button>
               <button class="carousel-dot"        data-index="3" aria-label="Slide 4"></button>
             </div>
-          </div><!-- /collab-carousel -->
+          </div>
         </div>
 
-        <!-- Pillars list -->
         <div class="simbahayan-content">
           <p class="simbahayan-intro">
             Nagtutulungan kami ng University of Santo Tomas Simbahayan upang magbigay ng mas komprehensibong
@@ -1545,12 +1458,44 @@
     </div>
   </section>
 
+  <section id="awards">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-eyebrow">Pagkilala at Sertipikasyon</span>
+        <h2 class="section-title">Aming Mga <em>Parangal</em></h2>
+        <p class="section-subtitle">Katibayan ng aming patuloy na dedikasyon sa pagbibigay ng de-kalidad na edukasyon at serbisyo.</p>
+      </div>
 
-  <!-- ===================== CONTACT ===================== -->
+      <div class="awards-grid">
+        <div class="award-card">
+          <div class="award-icon">🏆</div>
+          <h3>DepEd Recognized ALS Provider</h3>
+          <p>Opisyal na kinikilala ng Department of Education para sa pagpapatupad ng Alternative Learning System.</p>
+        </div>
+        <div class="award-card">
+          <div class="award-icon">🏅</div>
+          <h3>TESDA Accredited Center</h3>
+          <p>Sertipikadong institusyon para sa technical-vocational courses tulad ng Caregiving at Bookkeeping.</p>
+        </div>
+        <div class="award-card">
+          <div class="award-icon">🌟</div>
+          <h3>Outstanding NGO Partner</h3>
+          <p>Ginawaran ng pagkilala para sa mahusay na pakikipagtulungan sa mga lokal na yunit ng pamahalaan.</p>
+        </div>
+        <div class="award-card">
+          <div class="award-icon">🤝</div>
+          <h3>Simbahayan Excellence Award</h3>
+          <p>Kinikilala ng UST Simbahayan para sa natatanging kontribusyon sa community extension at outreach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section id="contact">
     <div class="container">
       <div class="text-center">
-        <span class="section-eyebrow" style="color:var(--gold-light);">Makipag-ugnayan</span>
+        <span class="section-eyebrow" style="color:var(--gold);">Makipag-ugnayan</span>
         <h2 class="section-title">Handa Kaming <em>Tumulong</em></h2>
         <p class="section-subtitle">Makipag-ugnayan sa pinakamalapit na kampus sa inyo.</p>
       </div>
@@ -1602,7 +1547,6 @@
   </section>
 
 
-  <!-- ===================== FOOTER ===================== -->
   <footer>
     <p>
       &copy; 2025 <strong>RMI Youth Center</strong> — Religious of Mary Immaculate &nbsp;·&nbsp;
@@ -1612,7 +1556,6 @@
   </footer>
 
 
-  <!-- ===================== CAROUSEL JS ===================== -->
   <script>
     (function () {
       const track  = document.getElementById('carouselTrack');
@@ -1644,7 +1587,6 @@
         });
       });
 
-      // Pause on hover
       const carousel = document.getElementById('collabCarousel');
       carousel.addEventListener('mouseenter', stopPlay);
       carousel.addEventListener('mouseleave', autoPlay);
