@@ -7,7 +7,7 @@
 
 <!--
   ╔══════════════════════════════════════════════════════════════╗
-  ║  RMI YOUTH CENTER — MANILA BRANCH (HOLY FAMILY)             ║
+  ║  RMI SOCIAL AND EDUCATIONAL CENTER — MANILA BRANCH          ║
   ║  Color Scheme: Light Blue · Navy Blue · Muted Gold           ║
   ║  Fonts: Merriweather (serif headings) + Source Sans 3 (body) ║
   ║  ─────────────────────────────────────────────────────────── ║
@@ -315,7 +315,8 @@ a   { color: inherit; text-decoration: none; }
   border-left: 3px solid var(--gold);
 }
 .programs-category { margin-bottom: 2.5rem; }
-.prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.prog-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+.prog-card { flex: 0 0 calc(33.333% - 1rem); }
 .prog-card {
   background: var(--navy); padding: 1.75rem 1.5rem;
   border-radius: var(--radius-md); border-bottom: 3px solid var(--campus);
@@ -336,7 +337,8 @@ a   { color: inherit; text-decoration: none; }
    TEAM / FACULTY
    ========================================================= */
 .team-section { background: var(--white); padding-block: 5rem; }
-.faculty-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3rem; }
+.faculty-grid { display: flex; justify-content: center; gap: 1.25rem; margin-top: 3rem; }
+.faculty-card { max-width: 320px; }
 .faculty-card {
   background: var(--off-white); border: 1px solid var(--border);
   border-radius: var(--radius-md); overflow: hidden; transition: all .2s;
@@ -519,8 +521,8 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
    ========================================================= */
 @media (max-width: 900px) {
   .about-grid   { grid-template-columns: 1fr; gap: 2rem; }
-  .prog-grid    { grid-template-columns: 1fr 1fr; }
-  .faculty-grid { grid-template-columns: 1fr 1fr; }
+  .prog-card    { flex: 0 0 calc(50% - 1rem); }
+  .faculty-grid { justify-content: center; }
   .appt-inner   { grid-template-columns: 1fr; gap: 2.5rem; }
   .map-grid     { grid-template-columns: 1fr; }
   .flow-steps   { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
@@ -528,8 +530,8 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
   .form-fields-preview { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 560px) {
-  .prog-grid    { grid-template-columns: 1fr; }
-  .faculty-grid { grid-template-columns: 1fr 1fr; }
+  .prog-card    { flex: 0 0 100%; }
+  .faculty-grid { justify-content: center; }
   .flow-steps   { grid-template-columns: 1fr; }
   .info-bar .container { gap: 1rem; }
   .hero { padding-block: 6rem 3.5rem; }
@@ -567,7 +569,7 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
       </div>
       <div class="logo-text-stack">
         <span class="org">Religious of Mary Immaculate</span>
-        <span class="name">RMI Youth Center</span>
+        <span class="name">RMI Social and Educational Center</span>
         <span class="tag">Edukasyon · Pananampalataya · Serbisyo</span>
       </div>
     </div>
@@ -589,7 +591,7 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
     <div class="hero-content">
 
       <div class="hero-breadcrumb">
-        RMI Youth Center
+        RMI Social and Educational Center
         <span class="crumb-accent">→ Manila Campus</span>
       </div>
 
@@ -601,7 +603,7 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
       <!-- ✏️ BRANCH-SPECIFIC: address, phone, age range -->
       <div class="hero-meta">
         <div class="hero-meta-item">📍 <strong>1231 A.H. Lacson Street, Sampaloc, Manila</strong></div>
-        <div class="hero-meta-item">📞 <strong>(02) 8731-4882</strong></div>
+        <div class="hero-meta-item">📞 <strong>(02) 8731-4882</strong> | <strong>0916 218 6119</strong></div>
         <div class="hero-meta-item">👥 <strong>Edad 15–35</strong></div>
       </div>
 
@@ -669,10 +671,9 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
           ║  Suggested: classroom, library, graduation, events   ║
           ╚═══════════════════════════════════════════════════════╝
         -->
-        <div class="photo-gallery">
+        <div class="photo-gallery" style="grid-template-columns: repeat(3, 1fr);">
           <div class="photo-slot"><div class="ps-icon">🏛️</div><div class="ps-label">Silid-Aralan</div></div>
           <div class="photo-slot"><div class="ps-icon">📚</div><div class="ps-label">Aklatan</div></div>
-          <div class="photo-slot"><div class="ps-icon">👨‍🏫</div><div class="ps-label">Guro</div></div>
           <div class="photo-slot"><div class="ps-icon">🎓</div><div class="ps-label">Graduation</div></div>
         </div>
 
@@ -698,14 +699,14 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
             <div class="detail-icon">📞</div>
             <div>
               <div class="detail-label">Telepono</div>
-              <div class="detail-value">(02) 8731-4882</div>
+              <div class="detail-value">(02) 8731-4882<br>0916 218 6119</div>
             </div>
           </div>
           <div class="detail-row">
             <div class="detail-icon">🕐</div>
             <div>
               <div class="detail-label">Oras ng Operasyon</div>
-              <div class="detail-value">Lunes – Biyernes: 8:00 AM – 5:00 PM<br>Linggo: ALS Face-to-Face Classes</div>
+              <div class="detail-value">Office Hours: 8:00 AM – 5:00 PM (Lunes – Linggo)<br>Class Hours: 8:00 AM – 4:00 PM</div>
             </div>
           </div>
           <div class="detail-row">
@@ -791,12 +792,6 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
         </div>
 
         <div class="prog-card">
-          <div class="prog-icon">🔧</div>
-          <div class="prog-name">Computer Hardware Servicing</div>
-          <p class="prog-desc">Pag-aayos at maintenance ng computer hardware. TESDA-accredited.</p>
-        </div>
-
-        <div class="prog-card">
           <div class="prog-icon">🗣️</div>
           <div class="prog-name">Basic Communication Skills</div>
           <p class="prog-desc">Oral at written communication para sa trabaho at pang-araw-araw na buhay.</p>
@@ -855,16 +850,13 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
 
       <!--
         ╔══════════════════════════════════════════════════════╗
-        ║  STAFF / FACULTY CARDS                              ║
-        ║  ✏️ BRANCH-SPECIFIC — one card per staff member    ║
+        ║  DIRECTRESS CARD ONLY                               ║
+        ║  ✏️ BRANCH-SPECIFIC — replace with actual info      ║
         ║                                                     ║
         ║  To add a photo:                                    ║
         ║  Replace the .faculty-photo div content with:       ║
-        ║    <img src="staff1.jpg" alt="Full Name">           ║
+        ║    <img src="directress.jpg" alt="Full Name">       ║
         ║                                                     ║
-        ║  Update: .faculty-name → actual full name           ║
-        ║          .faculty-role → position / subject         ║
-        ║  Duplicate this block to add more staff members     ║
         ╚══════════════════════════════════════════════════════╝
       -->
 
@@ -874,41 +866,8 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
           <div class="fp-hint">Ilagay larawan</div>
         </div>
         <div class="faculty-info">
-          <div class="faculty-name">Pangalan ng Guro</div><!-- ✏️ BRANCH-SPECIFIC -->
-          <div class="faculty-role">Campus Coordinator</div><!-- ✏️ BRANCH-SPECIFIC -->
-        </div>
-      </div>
-
-      <div class="faculty-card">
-        <div class="faculty-photo">
-          <div class="fp-icon">👨‍🏫</div>
-          <div class="fp-hint">Ilagay larawan</div>
-        </div>
-        <div class="faculty-info">
-          <div class="faculty-name">Pangalan ng Guro</div><!-- ✏️ BRANCH-SPECIFIC -->
-          <div class="faculty-role">ALS Teacher</div><!-- ✏️ BRANCH-SPECIFIC -->
-        </div>
-      </div>
-
-      <div class="faculty-card">
-        <div class="faculty-photo">
-          <div class="fp-icon">👩‍🏫</div>
-          <div class="fp-hint">Ilagay larawan</div>
-        </div>
-        <div class="faculty-info">
-          <div class="faculty-name">Pangalan ng Guro</div><!-- ✏️ BRANCH-SPECIFIC -->
-          <div class="faculty-role">TESDA Instructor</div><!-- ✏️ BRANCH-SPECIFIC -->
-        </div>
-      </div>
-
-      <div class="faculty-card">
-        <div class="faculty-photo">
-          <div class="fp-icon">👨‍🏫</div>
-          <div class="fp-hint">Ilagay larawan</div>
-        </div>
-        <div class="faculty-info">
-          <div class="faculty-name">Pangalan ng Guro</div><!-- ✏️ BRANCH-SPECIFIC -->
-          <div class="faculty-role">Admin Staff</div><!-- ✏️ BRANCH-SPECIFIC -->
+          <div class="faculty-name">Pangalan ng Directress</div><!-- ✏️ BRANCH-SPECIFIC -->
+          <div class="faculty-role">Directress</div><!-- ✏️ BRANCH-SPECIFIC -->
         </div>
       </div>
 
@@ -1094,11 +1053,11 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
         </div>
         <div class="map-info-card">
           <div class="map-info-label">📞 Telepono</div>
-          <div class="map-info-value">(02) 8731-4882</div>
+          <div class="map-info-value">(02) 8731-4882<br>0916 218 6119</div>
         </div>
         <div class="map-info-card">
           <div class="map-info-label">🕐 Oras</div>
-          <div class="map-info-value">Lunes – Biyernes: 8:00 AM – 5:00 PM<br>Linggo: ALS Face-to-Face</div>
+          <div class="map-info-value">Office Hours: 8:00 AM – 5:00 PM (Lunes – Linggo)<br>Class Hours: 8:00 AM – 4:00 PM</div>
         </div>
         <div class="map-info-card">
           <div class="map-info-label">🚌 Paano Pumunta</div>
@@ -1144,7 +1103,7 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
 <footer>
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-logo">RMI Youth Center</div>
+      <div class="footer-logo">RMI Social and Educational Center</div>
       <div class="footer-text">
         &copy; 2026 Religious of Mary Immaculate<br>
         <!-- ✏️ BRANCH-SPECIFIC: campus name + address -->
