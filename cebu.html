@@ -415,6 +415,22 @@ a   { color: inherit; text-decoration: none; }
 .btn-apply:hover { background: var(--campus-mid); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(43,108,176,.3); }
 .form-privacy { color: var(--text-light); font-size: .75rem; text-align: center; max-width: 440px; line-height: 1.65; }
 
+.form-embed-wrap {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 1rem;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.form-embed-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 800px;
+  border: none;
+}
+
 /* =========================================================
    APPOINTMENT / CALENDAR
    ========================================================= */
@@ -928,7 +944,7 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
           <div class="form-big-icon">📋</div>
           <div>
             <div class="form-intro-title">Simulan ang Iyong Application</div>
-            <p class="form-intro-text">Punan ang Google Forms sa pamamagitan ng button sa ibaba. Pagkatapos mong isumite ang iyong mga sagot, ang huling pahina ng form ay magbibigay sa iyo ng Google Calendar link para makita ang iyong nakatakdang interview schedule.</p>
+            <p class="form-intro-text">Punan ang Google Forms sa ibaba. Pagkatapos mong isumite ang iyong mga sagot, ang huling pahina ng form ay magbibigay sa iyo ng Google Calendar link para makita ang iyong nakatakdang interview schedule.</p>
           </div>
           <div class="form-fields-preview">
             <div class="ffp-item"><div class="ffp-icon">👤</div><div class="ffp-label">Personal Info</div><div class="ffp-desc">Pangalan, edad, tirahan, kontakt</div></div>
@@ -937,16 +953,7 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
             <div class="ffp-item"><div class="ffp-icon">💬</div><div class="ffp-label">Mode</div><div class="ffp-desc">F2F o Online na interview</div></div>
           </div>
 
-          <!--
-            ╔══════════════════════════════════════════════════════════╗
-            ║  APPLICATION FORM BUTTON                                ║
-            ║  ✏️ BRANCH-SPECIFIC: update href= to the Google Form   ║
-            ║  or Facebook page link for THIS campus only             ║
-            ╚══════════════════════════════════════════════════════════╝
-          -->
-          <a href="https://forms.gle/Bm2YiiqHdoKAm8U16" target="_blank" class="btn-apply">
-            📝 I-click Dito para sa Application Form
-          </a>
+          <div class="form-embed-wrap"><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd-G_fGrQ8Gl451W1LaDjsnKIk7sC5Wn1dmKKJiQxMFfUTTVQ/viewform?embedded=true">Loading…</iframe></div>
           
           <p class="form-privacy">🔒 Ang inyong impormasyon ay ligtas at gagamitin lamang para sa enrollment process ng RMI Cebu. Makikipag-ugnayan sa inyo ang aming admin para sa confirmation ng interview.</p>
         </div>
