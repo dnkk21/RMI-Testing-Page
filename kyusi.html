@@ -336,7 +336,8 @@ a   { color: inherit; text-decoration: none; }
    TEAM / FACULTY
    ========================================================= */
 .team-section { background: var(--white); padding-block: 5rem; }
-.faculty-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3rem; }
+.faculty-grid { display: flex; justify-content: center; gap: 1.25rem; margin-top: 3rem; }
+.faculty-card { max-width: 320px; width: 100%; }
 .faculty-card {
   background: var(--off-white); border: 1px solid var(--border);
   border-radius: var(--radius-md); overflow: hidden; transition: all .2s;
@@ -863,13 +864,13 @@ footer { background: var(--navy-dark); border-top: 3px solid var(--gold); paddin
       -->
 
       <div class="faculty-card">
-        <div class="faculty-photo">
-          <div class="fp-icon">👩‍🏫</div>
-          <div class="fp-hint"><img src="qc_pictures/RMI-QC-directress.jpg"></div>
+        <div class="faculty-photo" style="aspect-ratio: auto; display: block;">
+          <img src="qc_pictures/RMI-QC-directress.jpg" alt="Sr. Shirley Milla" style="position: relative; width: 100%; height: auto;">
         </div>
         <div class="faculty-info">
           <div class="faculty-name">Sr. Shirley Milla</div>
           <div class="faculty-role">Directress</div>
+        </div>
       </div>
 
       <!-- <div class="faculty-card">
